@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get in Touch | Nuziveedu Dairy Farms</title>
+  <link rel="stylesheet" href="getstyle.css ">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+</head>
+<body>
+  <header>
+  <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="get-in-touch-wrapper">
+  <!-- OUTSIDE NAV -->
+  <a href="contact.html" class="get-in-touch">
+    Get In Touch <img src="images/geticon.jpg" alt="arrow"></img>
+  </a>
+</div>
+        <div class="navbar">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="images/logofix2 (1).png" alt="Logo">
+            </div>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="nutrition.html">Nutrition</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+
+            <!-- Contact Section -->
+<div class="nav-contact">
+  <!-- Call Us Now -->
+  <a href="tel:+910123456789">
+    <i class="fa fa-phone" aria-hidden="true"></i>
+    <span>
+      Call us Now<br>
+      +91 01234 56789
+    </span>
+  </a>
+
+  <!-- Search Button -->
+  <button class="btn-search" aria-label="Search">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+      stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  </button>
+          <div class="hero-content">
+    <h1>About Us</h1>
+    <div class="links">
+        <h5><a href="home.html">Home ></a></h5>
+        <h5><a href="aboutus.html">About Us</a></h5>
+    </div>
+</div>
+    </section>
+    
+
+  <!-- Contact Info -->
+  <section class="contact-info">
+    <div class="contact-card">
+      <i class="fa-solid fa-envelope"></i>
+      <h3>Mail us 24/7</h3>
+      <p>pbmldf@godmin.com<br>pbmldf@ngainfo.com</p>
+    </div>
+    <div class="contact-card">
+      <i class="fa-solid fa-phone"></i>
+      <h3>Call us 24/7</h3>
+      <p>Phone : (+65) 654-545-5418<br>Mobile : (+01) 654-545-1235</p>
+    </div>
+    <div class="contact-card">
+      <i class="fa-solid fa-location-dot"></i>
+      <h3>Our Locations</h3>
+      <p>4621 Ripe Top, Arch St, Alaska<br>99798, USA main city.</p>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <section class="contact-form-section">
+    <div class="form-image">
+      <img src="images/ques (1).jpg" alt="Lady with Milk">
+    </div>
+   <div class="form-box">
+    <h6>Get to Contact Us</h6>
+  <h2>Have any Questions?<br>Get in Touch!</h2>
+  <form action="#" method="post" class="form-layout">
+    <div class="form-row">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number">
+    </div>
+    <div class="form-row">
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="text" name="subject" placeholder="Subject" required>
+    </div>
+    <div class="form-row full">
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    </div>
+    <button type="submit" class="form-btn">
+      Send Message <i class="fa-solid fa-paper-plane"></i>
+    </button>
+  </form>
+</div>
+  </section>
+
+  <!-- Partners -->
+  <section class="partners">
+    <img src="images/organic-removebg-preview.png" alt="Organic Rice">
+    <img src="images/farm-removebg-preview.png" alt="Farm">
+    <img src="images/fresh-removebg-preview.png" alt="Farm Fresh">
+    <img src="images/food__2_-removebg-preview.png" alt="Food">
+    <img src="images/eco-removebg-preview.png" alt="Eco Product">
+    <img src="images/tractor-removebg-preview.png" alt="Tractor">
+  </section>
+
+ 
+  <!-- Full screen map -->
+  <section class="map-section">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.086291573128!2d80.849998!3d16.780001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3b8f9a2a2a2a2a%3A0xabcdef1234567890!2sNuzvid%2C%20Andhra%20Pradesh%2C%20India!5e0!3m2!1sen!2sus!4v1695110000000!5m2!1sen!2sus" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </section>
+
+  
+
+   <div id="footer"></div>
+
+  <script>
+    // Load footer dynamically
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farm Website</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Add this to enable Font Awesome icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<body>
+   <div id="header"></div>
+   <script>
+    // Load header.html dynamically
+    fetch("header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+  </script>
+
+   <!-- ===== BODY  (Load from body.html) ===== -->
+  <div id="body"></div>
+   <!-- ===== Body Script ===== -->
+   <script>
+        fetch("body.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("body").innerHTML = data;
+      });
+ </script>
+
+ 
+ 
+<!-- ===== Footer Placeholder (Load from footer.html) ===== -->
+  <div id="footer-placeholder"></div>
+ 
+  <!-- ===== Footer Script ===== -->
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+   </script>
+</body>
+</html>
