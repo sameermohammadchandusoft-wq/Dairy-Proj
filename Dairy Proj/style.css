@@ -21,13 +21,13 @@ body, html {
   position: relative;
   padding: 0px 80px; /* Add padding around the content */
   overflow: hidden;
-
+ 
   /* Adding Borders to All Four Sides */
   border: 10px solid #f8f6f6; /* Change color as needed */
   box-sizing: border-box; /* Ensures padding and border do not affect the total width/height */
-  
+ 
   /* Border-radius for curved corners */
-  border-top-right-radius: 30px;
+  border-top-right-radius: 0px;
   border-top-left-radius: 30px;
   border-bottom-right-radius: 30px;
   border-bottom-left-radius: 30px;
@@ -45,42 +45,41 @@ body, html {
   z-index: 2;
 }
 
+/* Navbar */
 .navbar {
   display: flex;
-  align-items: center;         /* vertically center items inside */
-  justify-content: space-between;
-  padding: 5px 0;
-  max-width: 1180px;
-  margin: 0 auto;              /* center horizontally */
-  box-sizing: border-box;
-  transform: translateY(-10px); /* moves navbar 10px up; adjust as needed */
+  justify-content: flex-start; /* Align everything to the left */
+  align-items: center;
+  padding: 5px 20px; /* Reduced padding (from 40px to 20px) */
 }
-/* Logo pinned left */
-.logo {
-  flex: 0 0 auto;
-  margin-left: -20px;          /* slightly left */
-  transform: translateY(10px);  /* move logo 5px down; adjust as needed */
-}
+
+/* Logo */
 .logo img {
-  height: 100px;
-  display: block;
+  height: 80px;
+  margin-left: 0; /* Align logo with the left */
 }
-/* Nav menu centered */
+
+/* Navbar Menu */
 .nav-menu {
   list-style: none;
   display: flex;
-  gap: 25px;
-  margin: 0;
+  gap: 20px; /* Space between menu items */
+  margin-left: 20px; /* Reduced margin left to bring items closer */
   padding: 0;
-  flex: 1;                      /* takes all middle space */
-  justify-content: center;       /* center menu items */
+  margin-top: -50px; /* Adjusted space for vertical alignment */
 }
 
+.nav-menu li {
+  position: relative;
+}
+
+/* Navbar Menu */
 .nav-menu li a {
   text-decoration: none;
   color: white;
   font-weight: 500;
-  padding-left: 20px;
+  font-size: 12px; /* Reduced font size from default */
+  padding-left: 20px; /* Space for the dot */
   position: relative;
   display: flex;
   align-items: center;
@@ -89,7 +88,7 @@ body, html {
 .nav-menu li a::before {
   content: '•';
   position: absolute;
-  left: -8px;
+  left: -8px; /* Move the dot slightly to the left */
   color: yellow;
   font-size: 20px;
   top: 50%;
@@ -101,34 +100,39 @@ body, html {
   color: yellow;
 }
 
-/* Contact + search aligned right */
+/* Contact Section */
 .nav-contact {
   display: flex;
   align-items: center;
-  gap: 12px;          /* gap between contact items and search button */
+  gap: 16px; /* Spacing between phone, search, button */
   font-family: Arial, sans-serif;
-  flex: 0 0 auto;
-  margin-right: 20px; /* optional, moves the whole group slightly left */
+  margin-left: 160px; /* Reduced to shift the contact section left */
+  margin-top: -40px; /* Adjusted vertical position */
 }
 
+/* Links inside nav-contact */
 .nav-contact a {
   display: flex;
   align-items: center;
-  gap: 8px;           /* gap between icon and text in links */
+  gap: 5px; /* Spacing between icon and text */
   text-decoration: none;
   color: white;
   font-size: 14px;
   font-weight: 500;
 }
 
+/* Icons inside nav-contact */
 .nav-contact i {
-  font-size: 18px;
+  font-size: 18px; /* Adjust icon size as needed */
   color: white;
 }
 
+.nav-search-wrapper {
+  position: relative;
+  display: inline-block;
+}
 /* Search Button */
 .btn-search {
-  margin-left: 8px;   /* small gap between contact links and search button */
   background-color: white;
   border: none;
   border-radius: 50%;
@@ -139,10 +143,102 @@ body, html {
   justify-content: center;
   align-items: center;
   transition: background 0.3s ease;
+  margin-left: 15px; /* Maintain this if you want horizontal offset */
+  margin-top: -35px; /* Adjust this value to move the button up/down */
 }
 
+.search-box.show {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 200px;
+}
+
+/* Hover effect for search button */
 .btn-search:hover {
   background-color: #eaeaea;
+}
+
+.btn-search svg {
+  stroke: #007bff;
+  width: 18px;
+  height: 18px;
+}
+
+.nav-search-wrapper {
+  position: relative; /* for positioning the search box */
+  display: inline-block;
+}
+
+/* Hidden by default */
+.search-box {
+  position: absolute;
+  top: 32px;                /* below search icon */
+  right: -120px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 1;
+  transform: translateY(-10px);
+  visibility: hidden;
+  background-color: white;
+  border: 1px solid #0b9cfd;
+  border-radius: 6px;
+  padding: 10px 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.nav-search-wrapper:hover .search-box {
+  opacity: 2;
+  pointer-events: visibleFill;
+}
+
+/* Arrow pointing to the search button */
+.search-box::before {
+  content: '';
+  position: absolute;
+  top: -8px; /* above the box */
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-left: 0px solid #0b9cfd;;
+  border-top: 0px solid #0b9cfd;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
+  z-index: -2;
+}
+
+
+.search-box input {
+  border: 1px solid #2230f0;
+  border-radius: 4px;
+  outline: none;
+  padding: 6px 8px;
+  font-size: 14px;
+  width: 180px;
+}
+
+.search-box .btn-submit {
+  background-color: #0078c8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-box .btn-submit:hover {
+  background-color: #0f5ccf;
 }
 
 
@@ -164,11 +260,11 @@ body, html {
 
 .get-in-touch {
   position: absolute;
-  top: 20px;       
-  right: -6px;   /* moved 20px left from previous -50px */
+  top: 13px;      
+  right: 0px;   /* moved 20px left from previous -50px */
   background: #2471ff;
   color: #fff;
-  padding: 12px 20px;
+  padding: 10px 20px;
   border-radius: 45px;
   font-weight: bold;
   display: flex;
@@ -179,12 +275,12 @@ body, html {
   text-decoration: none;
   transition: background 0.3s ease, transform 0.3s ease;
 }
-
+ 
 .get-in-touch:hover {
   background: #0d5adf;
-  transform: translateX(-3px); 
+  transform: translateX(-3px);
 }
-
+ 
 .get-in-touch img {
   width: 16px;
   height: 16px;

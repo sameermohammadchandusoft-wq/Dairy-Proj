@@ -328,7 +328,7 @@ section.hero {
 
 /* Final footer CSS */
 .FTR-footer {
- background: url("images/footerbg.png") no-repeat center bottom; /* your image */
+ background: url("images/footerbg.png") no-repeat center bottom;  /* your image */
   background-size:  100% auto;
   background-color: white;
   --ftr-blue: #0078c8;

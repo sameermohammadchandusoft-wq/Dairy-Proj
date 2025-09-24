@@ -1,3 +1,29 @@
+
+
+    // Load header.html dynamically
+    fetch("header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+         const searchBtn = document.querySelector('.btn-search');
+         const searchBox = document.querySelector('.search-box');
+
+      // Toggle search box on button click
+        searchBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // prevent click from reaching document
+        searchBox.classList.toggle('show');
+        });
+
+      // Hide search box when clicking outside
+        document.addEventListener('click', (e) => {
+        if (!searchBox.contains(e.target) && !searchBtn.contains(e.target)) {
+          searchBox.classList.remove('show');
+        }
+        });
+        });
+  
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const faqQuestions = document.querySelectorAll('.faq-question');
 
@@ -72,3 +98,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+

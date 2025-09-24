@@ -843,62 +843,20 @@
   }
 }
 
-/* Blog Section */
-.blog-section {
-  padding: 60px 80px;
-  background: #f9f9f4;
-}
-
-.blog-section .section-tag {
-  display: inline-block;
-  font-size: 0.9rem;
-  background: #fff;
-  border-radius: 20px;
-  padding: 6px 16px;
-  font-weight: 600;
-  color: #555;
-  margin-bottom: 12px;
-}
-
-.blog-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 28px;
-}
-
-.blog-header h2 {
-  font-size: 1.9rem;
-  font-weight: 700;
-  color: #222;
-}
-
-.blog-nav button {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.blog-nav button:hover {
-  background: #eaeaea;
-}
-
-/* Blog Wrapper */
+/* Blog Wrapper (scrollable) */
 .blog-wrapper {
   display: flex;
   gap: 24px;
-  overflow-x: auto;   /* scroll if more blogs */
+  overflow-x: auto;          /* horizontal scroll */
   scroll-snap-type: x mandatory;
   padding-bottom: 10px;
+  padding-left: 10px;        /* optional left padding */
 }
 
 .blog-wrapper::-webkit-scrollbar {
   height: 6px;
 }
+
 .blog-wrapper::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 3px;
@@ -906,79 +864,90 @@
 
 /* Blog Card */
 .blog-card {
-  flex: 0 0 300px;  /* card width */
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: relative;        /* for arrow positioning */
+  width: 300px;              /* adjust as needed */
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background-color: #fff;
+  flex-shrink: 0;
   scroll-snap-align: start;
   transition: transform 0.3s ease;
 }
 
 .blog-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px); /* subtle lift on hover */
 }
 
+/* Blog Image */
 .blog-img {
   position: relative;
-  height: 200px;
-  overflow: hidden;
 }
 
 .blog-img img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: block;
+  border-radius: 12px 12px 0 0;
 }
 
-.blog-img .category {
+/* Category Badge */
+.category {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #fff;
-  color: #2ecc71;
-  font-size: 0.8rem;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 120, 200, 0.8);
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 8px;
   font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 20px;
+  text-transform: uppercase;
 }
 
+/* North-East Arrow in Circle */
+.arrow-circle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #0078c8;  /* circle color */
+  color: #fff;                /* arrow color */
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.arrow-circle:hover {
+  background-color: #005a99;             /* darker on hover */
+  transform: translate(-2px, -2px) scale(1.1); /* subtle lift & grow */
+}
+
+/* Blog Content */
 .blog-content {
-  padding: 16px;
+  padding: 15px;
 }
 
 .blog-content .meta {
-  font-size: 0.8rem;
-  color: #777;
+  font-size: 12px;
+  color: #555;
   margin-bottom: 8px;
 }
 
 .blog-content h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #222;
+  font-size: 16px;
+  color: #333;
   line-height: 1.4;
-}
-.blog-wrapper {
-  display: flex;
-  justify-content: space-between; /* spread evenly */
-  gap: 24px;
-  overflow: hidden; /* remove scrolling */
+  margin: 0;
 }
 
-.blog-card {
-  flex: 1;              /* each card same width */
-  max-width: 300px;     /* optional: limit width */
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
 
-.blog-card:hover {
-  transform: translateY(-5px);
-}
+
 
 /* Final footer CSS */
 .FTR-footer {
@@ -994,7 +963,6 @@
   box-sizing: border-box;
   position: relative;
 }
- 
 /* Top blue strip */
 .FTR-top-strip {
   background: var(--ftr-blue);
