@@ -843,45 +843,26 @@
   }
 }
 
-/* Blog Wrapper (scrollable) */
 .blog-wrapper {
   display: flex;
   gap: 24px;
-  overflow-x: auto;          /* horizontal scroll */
+  overflow-x: auto;  /* scrollable */
   scroll-snap-type: x mandatory;
   padding-bottom: 10px;
-  padding-left: 10px;        /* optional left padding */
 }
 
-.blog-wrapper::-webkit-scrollbar {
-  height: 6px;
-}
-
-.blog-wrapper::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 3px;
-}
-
-/* Blog Card */
 .blog-card {
-  position: relative;        /* for arrow positioning */
-  width: 300px;              /* adjust as needed */
+  position: relative;  /* to position the arrow inside */
+  width: 300px;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   background-color: #fff;
   flex-shrink: 0;
-  scroll-snap-align: start;
-  transition: transform 0.3s ease;
 }
 
-.blog-card:hover {
-  transform: translateY(-5px); /* subtle lift on hover */
-}
-
-/* Blog Image */
 .blog-img {
-  position: relative;
+  position: relative; /* to position arrow relative to image */
 }
 
 .blog-img img {
@@ -890,7 +871,6 @@
   border-radius: 12px 12px 0 0;
 }
 
-/* Category Badge */
 .category {
   position: absolute;
   bottom: 10px;
@@ -900,52 +880,25 @@
   padding: 5px 10px;
   font-size: 12px;
   border-radius: 8px;
-  font-weight: 600;
-  text-transform: uppercase;
 }
 
-/* North-East Arrow in Circle */
-.arrow-circle {
+/* North-east arrow styling */
+.blog-img .arrow {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: #0078c8;  /* circle color */
-  color: #fff;                /* arrow color */
-  font-size: 16px;
-  width: 30px;
-  height: 30px;
+  font-size: 20px;
+  color: #0078c8;   /* arrow color */
+  background: rgba(255, 255, 255, 0.8);
+  padding: 4px 8px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
 }
 
-.arrow-circle:hover {
-  background-color: #005a99;             /* darker on hover */
-  transform: translate(-2px, -2px) scale(1.1); /* subtle lift & grow */
+.blog-img .arrow:hover {
+  transform: translate(2px, -2px);  /* subtle move on hover */
 }
-
-/* Blog Content */
-.blog-content {
-  padding: 15px;
-}
-
-.blog-content .meta {
-  font-size: 12px;
-  color: #555;
-  margin-bottom: 8px;
-}
-
-.blog-content h3 {
-  font-size: 16px;
-  color: #333;
-  line-height: 1.4;
-  margin: 0;
-}
-
 
 
 

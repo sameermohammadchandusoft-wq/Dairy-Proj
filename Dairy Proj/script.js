@@ -2,6 +2,7 @@
 
     // Load header.html dynamically
     fetch("header.html")
+    
       .then(response => response.text())
       .then(data => {
         document.getElementById("header").innerHTML = data;
@@ -99,4 +100,30 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
+   fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+        
+      });
+      document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+ 
+      if (backToTop) {
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 300) {
+            backToTop.style.display = "flex";
+          }
+          else {
+            backToTop.style.display = "none";
+          }
+        });
+ 
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  }
+});

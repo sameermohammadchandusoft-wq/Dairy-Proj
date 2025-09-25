@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome (latest CDN) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -12,19 +13,18 @@
 <body>
 
     <!-- Hero Section -->
-      <section class="hero-section">
-      <div class="get-in-touch-wrapper">
-  <!-- OUTSIDE NAV -->
-  <a href="contact.html" class="get-in-touch">
-    Get In Touch <img src="images/geticon.jpg" alt="arrow"></img>
-  </a>
-</div>
+    <section class="hero-section">
         <div class="navbar">
             <!-- Logo -->
             <div class="logo">
                 <img src="images/logofix2 (1).png" alt="Logo">
             </div>
-            
+              <div class="get-in-touch-wrapper">
+         <!-- OUTSIDE NAV -->
+           <a href="getintouch.html" class="get-in-touch">
+             Get In Touch <img src="images/geticon.jpg" alt="arrow"></img>
+            </a>
+            </div>
             <!-- Navigation Menu -->
             <ul class="nav-menu">
                 <li><a href="home.html">Home</a></li>
@@ -34,7 +34,7 @@
                 <li><a href="aboutus.html">About Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
-<div class="nav-spacer"></div>
+
             <!-- Contact Section -->
 <div class="nav-contact">
   <!-- Call Us Now -->
@@ -46,19 +46,14 @@
     </span>
   </a>
 
-  <!-- Search Button -->
-  <button class="btn-search" aria-label="Search">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
-      stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="8"></circle>
-      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-    </svg>
-  </button>
-
-  <!-- Get In Touch -->
-</div>
-
+   <div class="nav-search-wrapper">
+      <button class="btn-search" aria-label="Search">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+      
         <div class="hero-content">
     <h1>About Us</h1>
     <div class="links">
@@ -72,7 +67,7 @@
 
     
 
-      <!-- About Section -->
+    <!-- About Section -->
 <section class="about">
   <div class="about-image">
     <img src="images/aboutimg.jpg" alt="Farmer with buffalo">
@@ -110,7 +105,7 @@
     </div>
   </div>
   </section>
-  
+
 <section class="scrolling-text">
   <div class="marquee">
     <span class="word">Vegetables</span>
@@ -121,7 +116,7 @@
     <span class="star">✱</span>
     <span class="word">Organic</span>
     <span class="star">✱</span>
-   
+    
     <!-- Duplicate for scrolling effect -->
     <span class="word">Vegetables</span>
     <span class="star">✱</span>
@@ -133,6 +128,9 @@
     <span class="star">✱</span>
   </div>
 </section>
+
+
+
 
 <section class="products">
   <span class="tag">Who We Are</span>
@@ -176,7 +174,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- Dots Section -->
 <div class="dots">
   <span class="dot active"></span>
@@ -185,10 +183,11 @@
   <span class="dot"></span>
   <span class="dot"></span>
 </div>
- 
+
 <section class="process">
   <span class="tag">Get To Know Us</span>
   <div class="process-content">
+   
     <!-- Left Side (Text + Image) -->
     <div class="process-left">
       <h2>Buffalo Milk Producing &<br>Cleaning Process</h2>
@@ -206,7 +205,8 @@
         which don’t look even.
       </p>
  
-      <div class="step">
+      <!-- Step 01 (highlighted) -->
+      <div class="step highlight">
         <span class="step-number">01</span>
         <div class="step-text">
           <h3>Schedule Your Experience</h3>
@@ -214,6 +214,7 @@
         </div>
       </div>
  
+      <!-- Step 02 -->
       <div class="step">
         <span class="step-number">02</span>
         <div class="step-text">
@@ -222,6 +223,7 @@
         </div>
       </div>
  
+      <!-- Step 03 -->
       <div class="step">
         <span class="step-number">03</span>
         <div class="step-text">
@@ -230,6 +232,7 @@
         </div>
       </div>
  
+      <!-- Step 04 -->
       <div class="step">
         <span class="step-number">04</span>
         <div class="step-text">
@@ -240,7 +243,6 @@
     </div>
   </div>
 </section>
-
   <div class="history-section">
   <span class="history-badge">🛈 Our History</span>
   <div class="history-header-row">
@@ -277,6 +279,7 @@
   </div>
 </div>
  
+ 
 <section class="farm-banner">
   <img src="images/cont.jpg" alt="Dairy Farm">
   <div class="banner-content">
@@ -286,16 +289,83 @@
 </section>
 </div>
 
-<!-- ===== Footer Placeholder (Load from footer.html) ===== -->
-  <div id="footer-placeholder"></div>
+<!-- Testimonials -->
+  <section class="testimonial-section">
+  <div class="container">
+    <span class="section-tag">Testimonial</span>
+    <h2 class="section-title">What our customers say</h2>
  
-  <!-- ===== Footer Script ===== -->
+    <div class="testimonial-header">
+      <div></div>
+      <div class="testimonial-nav">
+        <button class="nav-btn prev">‹</button>
+        <button class="nav-btn next">›</button>
+      </div>
+    </div>
+ 
+    <div class="testimonial-wrapper">
+      <!-- Card 1 -->
+      <div class="testimonial-card">
+        <div class="quote-icon">❝</div>
+        <div class="stars">★★★★★</div>
+        <p>
+          “I would recommend practitioners at this center to everyone! They are great to work with and are excellent trainers. Thank you all!”
+        </p>
+        <div class="author">
+          <img src="images/test1.png" alt="Daniel Craig">
+          <div>
+            <h4>Daniel Craig</h4>
+            <span>CO FOUNDER</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Card 2 -->
+      <div class="testimonial-card">
+        <div class="quote-icon">❝</div>
+        <div class="stars">★★★★★</div>
+        <p>
+          “I would recommend practitioners at this center to everyone! They are great to work with and are excellent trainers. Thank you all!”
+        </p>
+        <div class="author">
+          <img src="images/test2.png" alt="Amelia Dyer">
+          <div>
+            <h4>Amelia Dyer</h4>
+            <span>MANAGER</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Card 3 -->
+      <div class="testimonial-card">
+        <div class="quote-icon">❝</div>
+        <div class="stars">★★★★★</div>
+        <p>
+          “I would recommend practitioners at this center to everyone! They are great to work with and are excellent trainers. Thank you all!”
+        </p>
+        <div class="author">
+          <img src="images/test3.png" alt="Henry Cavil">
+          <div>
+            <h4>Henry Cavil</h4>
+            <span>CEO & FOUNDER</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== Footer Placeholder (Load from footer.html) ===== -->
+ <div id="footer"></div>
+
   <script>
-    fetch('footer.html')
+    // Load footer dynamically
+    fetch("footer.html")
       .then(response => response.text())
       .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
+        document.getElementById("footer").innerHTML = data;
       });
-   </script>      
+  </script>   
+   <script src="script.js"></script>
+
 </body>
 </html>
