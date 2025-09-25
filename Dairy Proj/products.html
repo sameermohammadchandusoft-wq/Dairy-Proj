@@ -4,25 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products Page</title>
-  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="products.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
   <!-- Navbar -->
   
-<nav class="navbar">
+<div class="navbar">
   <div class="logo">
-    <img src="images/Nuzlog.png" alt="Logo">
+    <img src="images/hlogo.png" alt="Logo">
+     </div>
+              <div class="get-in-touch-wrapper">
+         <!-- OUTSIDE NAV -->
+           <a href="getintouch.html" class="get-in-touch">
+             Get In Touch <img src="images/geticonp-removebg-preview.png" alt="arrow"></img>
+            </a>
+            </div>
   </div>
   <ul class="nav-menu">
-  <li><a href="home.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="nutrition.html">Nutrition</a></li>
-                <li><a href="blogs.html">Blogs</a></li>
-                <li><a href="aboutus.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-    </ul>
+  <li><a href="Home.html">HOME</a></li>
+  <li><a href="products.html">PRODUCTS</a></li>
+  <li><a href="#">NUTRITION</a></li>
+  <li><a href="blogs.html">BLOGS</a></li>
+  <li><a href="aboutus.html">ABOUT US</a></li>
+  <li><a href="#">FARM VISIT</a></li>
+  <li><a href="#">CONTACT US</a></li>
+</ul>
   <div class="nav-contact">
   <!-- Call Us Now -->
   <a href="tel:+910123456789">
@@ -32,20 +40,26 @@
       +91 01234 56789
     </span>
   </a>
+   <!-- Wrapper to anchor popup relative to the button -->
+<div class="search-wrapper">
+      <!-- Search Button -->
+      <button class="btn-search" aria-label="Search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+    </div>
+  </nav>
 
-    <button class="btn-search" aria-label="Search">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
-      stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="8"></circle>
-      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-    </svg>
-  </button>
-    <button class="btn-contact">
-  Get In Touch <span class="arrow">↗</span>
-</button>
+  <!-- Search Popup -->
+  <div class="search-popup" id="searchPopup">
+    <form id="searchForm">
+      <input type="text" placeholder="Type to search..." />
+      <button type="submit">Search</button>
+    </form>
   </div>
-</nav>
+</div>
 
 
   <!-- Hero Section -->
@@ -54,7 +68,7 @@
   <div class="hero-left">
     <div class="top-row">
       <p class="small-box">LET'S DRINK HEALTHIER</p>
-      <img src="images/badge" alt="Quality Badge" class="badge">
+      <img src="images/blog2.jpg" alt="Quality Badge" class="badge">
     </div>
 
     <h1>
@@ -66,7 +80,7 @@
 
   <!-- Right side image -->
   <div class="hero-right">
-    <img src="images/proimg.jpg" alt="Farmer with Buffalo">
+    <img src="images/blog2.jpg" alt="Farmer with Buffalo">
   </div>
 </section>
 
@@ -155,7 +169,7 @@
   <div class="about-container">
     <!-- Left Side: Image -->
     <div class="about-image">
-      <img src="images/Buf.jpg" alt="Dairy Farm">
+      <img src="images/productsabout.jpg" alt="Dairy Farm">
     </div>
 
     <!-- Right Side: Content -->
@@ -392,7 +406,7 @@
     
     <!-- Left Side Image -->
     <div class="organic-image">
-      <img src="images/dairyproducts.jpg" alt="Organic Dairy Products">
+      <img src="images/orginc products.jpg" alt="Organic Dairy Products">
     </div>
     
     <!-- Right Side Content -->
@@ -423,64 +437,63 @@
     </div>
   </div>
 
+  <!-- Blog Cards Wrapper (scrollable) -->
   <div class="blog-wrapper">
-  <!-- Blog Card 1 -->
-  <div class="blog-card">
-    <div class="blog-img">
-      <img src="images/blog1.jpg" alt="Dairy Farming">
-      <span class="category">FOOD CROPS</span>
-      <span class="arrow">↗</span>
-    </div>
-    <div class="blog-content">
-      <div class="meta">
-        <span>March 28, 2024</span> | <span>Admin</span>
+    <!-- Blog Card 1 -->
+    <div class="blog-card">
+      <div class="blog-img">
+        <img src="images/blog1.jpg" alt="Dairy Farming">
+        <span class="category">FOOD CROPS</span>
       </div>
-      <h3>What technology is used for dairy farming?</h3>
+      <div class="blog-content">
+        <div class="meta">
+          <span>March 28, 2024</span> | <span>Admin</span>
+        </div>
+        <h3>What technology is used for dairy farming?</h3>
+      </div>
     </div>
-  </div>
 
-  <!-- Blog Card 2 -->
-  <div class="blog-card">
-    <div class="blog-img">
-      <img src="images/blog2.jpg" alt="Buffalo milk">
-      <span class="category">ORGANIC FARM</span>
-      <span class="arrow">↗</span>
-    </div>
-    <div class="blog-content">
-      <div class="meta">
-        <span>March 28, 2024</span> | <span>Admin</span>
+    <!-- Blog Card 2 -->
+    <div class="blog-card">
+      <div class="blog-img">
+        <img src="images/blog2.jpg" alt="Buffalo milk">
+        <span class="category">ORGANIC FARM</span>
       </div>
-      <h3>How to increase Buffalo milk naturally?</h3>
+      <div class="blog-content">
+        <div class="meta">
+          <span>March 28, 2024</span> | <span>Admin</span>
+        </div>
+        <h3>How to increase Buffalo milk naturally?</h3>
+      </div>
     </div>
-  </div>
 
-  <!-- Blog Card 3 -->
-  <div class="blog-card">
-    <div class="blog-img">
-      <img src="images/blog3.jpg" alt="Dairy farm types">
-      <span class="category">FARMING TIPS</span>
-      <span class="arrow">↗</span>
-    </div>
-    <div class="blog-content">
-      <div class="meta">
-        <span>March 28, 2024</span> | <span>Admin</span>
+    <!-- Blog Card 3 -->
+    <div class="blog-card">
+      <div class="blog-img">
+        <img src="images/blog3.jpg" alt="Dairy farm types">
+        <span class="category">FARMING TIPS</span>
       </div>
-      <h3>Which type of Dairy farm is more prevalent today?</h3>
+      <div class="blog-content">
+        <div class="meta">
+          <span>March 28, 2024</span> | <span>Admin</span>
+        </div>
+        <h3>Which type of Dairy farm is more prevalent today?</h3>
+      </div>
     </div>
   </div>
-</div>
 </section>
 
 <!-- ===== Footer Placeholder (Load from footer.html) ===== -->
-  <div id="footer"></div>
+  <div id="footer-placeholder"></div>
 
+  <!-- ===== Footer Script ===== -->
   <script>
-    // Load footer dynamically
-    fetch("footer.html")
+    fetch('footer.html')
       .then(response => response.text())
       .then(data => {
-        document.getElementById("footer").innerHTML = data;
+        document.getElementById('footer-placeholder').innerHTML = data;
       });
   </script>
+  <script src="script.js"></script>
 </body>
 </html>

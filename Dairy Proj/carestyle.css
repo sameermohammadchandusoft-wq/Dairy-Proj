@@ -437,6 +437,37 @@ section.hero {
   position: relative;
 }
  
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  background: #0078c8;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  display: none; /* hidden by default */
+  z-index: 1000;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+ 
+  /* Center the arrow perfectly */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+ 
+.back-to-top:hover {
+  background: #005a94;
+}
+
 /* Top blue strip */
 .FTR-top-strip {
   background: var(--ftr-blue);

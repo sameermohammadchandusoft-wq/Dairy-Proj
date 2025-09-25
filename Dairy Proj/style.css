@@ -1382,146 +1382,325 @@ body, html {
   background: #eaeaea;
 }
 
-/* Blog Wrapper */
-.blog-wrapper {
+/* Define CSS Variables */
+:root {
+  --green: #4caf50;   /* Green color */
+  --accent: #227aff;   /* Accent color */
+  --muted: #999;       /* Muted text color */
+}
+ /* Blog Section */
+.blog-section {
+  padding: 60px 80px;
+  background: #f9f9f4;
+}
+
+.blog-header {
   display: flex;
-  gap: 24px;
-  overflow-x: auto;  /* Allow scrolling when there are more blogs */
-  scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
 }
 
-.blog-wrapper::-webkit-scrollbar {
-  height: 6px;
-}
-
-.blog-wrapper::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 3px;
-}
-
-/* Blog Card */
-.blog-card {
-  flex: 0 0 300px; /* Set fixed width for each card */
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-  scroll-snap-align: start;
-  transition: transform 0.3s ease;
-}
-
-.blog-card:hover {
-  transform: translateY(-5px); /* Hover effect for cards */
-}
-
-.blog-img {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
-}
-
-.blog-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.blog-img .category {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #fff;
-  color: #2ecc71;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 20px;
-}
-
-.blog-content {
-  padding: 16px;
-}
-
-.blog-content .meta {
-  font-size: 0.8rem;
-  color: #777;
-  margin-bottom: 8px;
-}
-
-.blog-content h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
+.blog-header h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
   color: #222;
-  line-height: 1.4;
 }
 
-.blog-wrapper {
-  display: flex;
-  justify-content: center;   /* center the cards */
-  gap: 30px;                 /* space between cards */
-  flex-wrap: wrap;           /* allow wrapping on smaller screens */
-  margin: 40px auto;         /* keep margin around section */
-  max-width: 1200px;         /* keeps layout neat */
-}
-
-.blog-card {
-  flex: 1 1 350px;           /* allow cards to grow bigger */
-  max-width: 380px;          /* slightly larger cards */
+.blog-nav button {
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.blog-card:hover {
-  transform: translateY(-8px); /* more lift on hover */
+.blog-nav button:hover {
+  background: #eaeaea;
 }
 
-.blog-img {
+/* Grid container */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 26px;
+}
+
+/* Grid boxes / Thumbs */
+.thumb {
   position: relative;
-  height: 230px;             /* taller image */
+  border-radius: 16px;
   overflow: hidden;
+  height: 250px;
 }
 
-.blog-img img {
+.thumb img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 16px;
 }
 
+/* Tag styles */
+.tag {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: #f0f7f0;
+  color: var(--green);
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 12px;
+}
 
-/* Back to Top Button */
-.back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 45px;
-  height: 45px;
-  background: #0078c8;
-  color: #fff;
-  border: none;
+/* Read-more button styles */
+.read-more {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: var(--accent);
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  font-size: 25px;
-  font-weight: bold;
-  cursor: pointer;
-  display: none; /* hidden by default */
-  z-index: 1000;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  transition: background 0.3s ease;
- 
-  /* Center the arrow perfectly */
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
-  padding: 0;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Meta info styles */
+.meta {
+  display: flex;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 10px 0;
+}
+
+/* Title styles */
+.title {
+  margin: 6px 0 18px;
+  font-size: 16px;
+  color: #20323a;
+}
+
+/* Hidden posts */
+.hidden {
+  display: none;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .thumb img {
+    height: 180px;
+  }
+}
+
+/*
+
+* Blog Section (HBP-) */
+.HBP-section {
+  font-family: 'Montserrat', sans-serif;
+  background: #f9f9f3;
+  padding: 60px 40px;
+  text-align: center;
 }
  
-.back-to-top:hover {
-  background: #005a94;
+/* Blog Section (HBP-) */
+.HBP-section {
+  font-family: 'Montserrat', sans-serif;
+  background: #f9f9f3;
+  padding: 60px 40px;
 }
+ 
+/* Header Row */
+.HBP-header {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+ 
+.HBP-header-left {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+ 
+.HBP-subtitle {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5b42;
+  margin-bottom: 8px;
+}
+ 
+.HBP-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #2a352a;
+  margin: 0;
+}
+ 
+/* Nav Arrows */
+.HBP-nav {
+  display: flex;
+  gap: 12px;
+}
+ 
+.HBP-nav-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #999;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+}
+ 
+.HBP-nav-btn:hover {
+  background: #f1f1f1;
+}
+ 
+/* Blog Cards Grid */
+.HBP-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+ 
+.HBP-card {
+  background: #f9f9f3;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: left;
+}
+ 
+.HBP-image {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+ 
+.HBP-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+ 
+.HBP-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #fff;
+  color: #4a5b42;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+ 
+.HBP-arrow {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #0078c8;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+ 
+/* Meta Info */
+.HBP-meta {
+  display: flex;
+  gap: 18px;
+  margin: 16px 0 10px;
+  font-size: 13px;
+  color: #4a5b42;
+  font-weight: 500;
+  padding-left: 1em;
+}
+ 
+.HBP-meta i {
+  margin-right: 6px;
+  color: #5b7f5c;
+}
+ 
+.HBP-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2a352a;
+  line-height: 1.4;
+  margin: 0;
+  padding-left: 0.5em;   /* small left padding to prevent clipping */
+  overflow: visible;     /* ensure text isn't hidden */
+  margin-bottom: 10px;
+}
+ 
+/* Responsive */
+@media (max-width: 980px) {
+  .HBP-cards {
+    grid-template-columns: 1fr;
+  }
+  .HBP-title {
+    font-size: 28px;
+  }
+  .HBP-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+ 
+.HBP-cards-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.HBP-cards {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.HBP-card {
+  flex: 0 0 calc(100% / 3); /* 3 visible by default */
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+
 
 /* Final footer CSS */
 .FTR-footer {
@@ -1538,6 +1717,8 @@ body, html {
   position: relative;
 }
  
+
+
 /* Top blue strip */
 .FTR-top-strip {
   background: var(--ftr-blue);
@@ -1712,4 +1893,34 @@ body, html {
   .FTR-split-links { grid-template-columns: 1fr; } /* stack 4+4 lists on mobile */
   .FTR-headline { font-size:22px; }
   .FTR-bottom { flex-direction:column; align-items:flex-start; gap:8px; padding-top:12px; }
+}
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  background: #0078c8;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  display: none; /* hidden by default */
+  z-index: 1000;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+ 
+  /* Center the arrow perfectly */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+ 
+.back-to-top:hover {
+  background: #005a94;
 }

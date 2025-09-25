@@ -16,7 +16,7 @@ body, html {
 
 /* Hero Section with Clip-Path */
 .hero-section {
-  background: url('images/aboutbg.png') no-repeat center center/cover;
+  background: url('images/About.png') no-repeat center center/cover;
   height: 60vh;
   width: 100%;
   position: relative;
@@ -259,6 +259,37 @@ body, html {
   box-sizing: border-box;
   position: relative;
 }
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  background: #0078c8;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  display: none; /* hidden by default */
+  z-index: 1000;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+ 
+  /* Center the arrow perfectly */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+ 
+.back-to-top:hover {
+  background: #005a94;
+}
+
  
 
 /* Top blue strip */
@@ -946,8 +977,8 @@ body, html {
 
 
 .history-section {
-  background: #fafaf6;
-  padding: 38px 0 32px 0;
+  margin: 25px 100px 24px 100px; 
+  box-sizing: border-box;
 }
  
 .history-badge {
@@ -965,9 +996,10 @@ body, html {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin: 25px 50px 24px 56px;
-  gap: 40px;
+  margin: 25px 66px 24px 36px; /* uniform left and right margin */
+  gap: 10px;
 }
+
  
 .history-header-row h2 {
   color: #1878d7;
@@ -981,12 +1013,13 @@ body, html {
   font-size: 1rem;
   color: #6d6d6d;
   margin: 0;
-  max-width: 390px;
+  max-width: 660px;
   opacity: 0.90;
 }
  
 .history-timeline {
   display: flex;
+  
   border-radius: 15px;
   padding: 32px 0 20px 0;
   margin: 0 36px 38px 36px;
@@ -1034,7 +1067,7 @@ body, html {
   text-align: start;
   margin-bottom: 6px;
   line-height: 1.48;
-  max-width: 190px;
+  max-width: 300px;
 }
  
 .farm-banner {

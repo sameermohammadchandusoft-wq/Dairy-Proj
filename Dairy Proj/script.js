@@ -100,30 +100,42 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-   fetch('footer.html')
-      .then(response => response.text())
+ fetch("body.html")
+      .then(res => res.text())
       .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-        
-      });
-      document.addEventListener("DOMContentLoaded", () => {
-      const backToTop = document.getElementById("backToTop");
- 
-      if (backToTop) {
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 300) {
-            backToTop.style.display = "flex";
+        document.getElementById("body").innerHTML = data;
+        const wrapper = document.querySelector(".HBP-cards");
+        const prevBtn = document.getElementById("HBP-prev");
+        const nextBtn = document.getElementById("HBP-next");
+
+        let currentPage = 0;
+        const cards = document.querySelectorAll(".HBP-card");
+        const cardCount = cards.length;
+        const visibleCards = 3;
+
+        function updateSlider() {
+          const wrapperWidth = document.querySelector(".HBP-cards-wrapper").offsetWidth;
+          wrapper.style.transform = `translateX(-${currentPage * wrapperWidth}px)`;
+        }
+
+        // Next → move one "page" (3 cards worth of width)
+        nextBtn.addEventListener("click", () => {
+          const totalPages = Math.ceil(cardCount / visibleCards);
+          if (currentPage < totalPages - 1) {
+            currentPage++;
+            updateSlider();
           }
-          else {
-            backToTop.style.display = "none";
-          }
-        });
- 
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    });
+});
+
+// Prev → move back one "page"
+prevBtn.addEventListener("click", () => {
+  if (currentPage > 0) {
+    currentPage--;
+    updateSlider();
   }
 });
+
+      });
+
+
+
