@@ -15,17 +15,17 @@ body, html {
 
 /* Hero Section with Clip-Path */
 .hero-section {
-  background: url('images/bg0.jpg') no-repeat center center/cover;
-  height: 50vh;
+  background: url('images/proimg.jpg') no-repeat center center/cover;
+  height: 60vh;
   width: 100%;
   position: relative;
-  padding: 0px 80px; /* Add padding around the content */
+  padding: 0px 80px 0px 0px; /* Removed left padding to push logo to the left */
   overflow: hidden;
- 
+
   /* Adding Borders to All Four Sides */
-  border: 10px solid #f8f6f6; /* Change color as needed */
-  box-sizing: border-box; /* Ensures padding and border do not affect the total width/height */
- 
+  border: 10px solid #f8f6f6;
+  box-sizing: border-box;
+
   /* Border-radius for curved corners */
   border-top-right-radius: 0px;
   border-top-left-radius: 30px;
@@ -50,36 +50,40 @@ body, html {
   display: flex;
   justify-content: flex-start; /* Align everything to the left */
   align-items: center;
-  padding: 5px 20px; /* Reduced padding (from 40px to 20px) */
+  padding: 5px 0px 5px 0px; /* Removed left padding */
 }
 
 /* Logo */
+.logo {
+  margin-left: 0;
+  padding-left: 15px;
+}
+
 .logo img {
   height: 80px;
-  margin-left: 0; /* Align logo with the left */
+  margin-left: 0; /* Ensures logo is aligned left */
 }
 
 /* Navbar Menu */
 .nav-menu {
   list-style: none;
   display: flex;
-  gap: 20px; /* Space between menu items */
-  margin-left: 20px; /* Reduced margin left to bring items closer */
+  gap: 20px;
+  margin-left: 35px;
   padding: 0;
-  margin-top: -50px; /* Adjusted space for vertical alignment */
+  margin-top: -50px; /* Adjust vertical alignment */
 }
 
 .nav-menu li {
   position: relative;
 }
 
-/* Navbar Menu */
 .nav-menu li a {
   text-decoration: none;
   color: white;
   font-weight: 500;
-  font-size: 12px; /* Reduced font size from default */
-  padding-left: 20px; /* Space for the dot */
+  font-size: 12px;
+  padding-left: 20px;
   position: relative;
   display: flex;
   align-items: center;
@@ -88,7 +92,7 @@ body, html {
 .nav-menu li a::before {
   content: '•';
   position: absolute;
-  left: -8px; /* Move the dot slightly to the left */
+  left: -8px;
   color: yellow;
   font-size: 20px;
   top: 50%;
@@ -104,17 +108,17 @@ body, html {
 .nav-contact {
   display: flex;
   align-items: center;
-  gap: 16px; /* Spacing between phone, search, button */
+  gap: 16px;
   font-family: Arial, sans-serif;
-  margin-left: 160px; /* Reduced to shift the contact section left */
-  margin-top: -40px; /* Adjusted vertical position */
+  margin-left: 300px;
+  margin-top: -40px;
 }
 
 /* Links inside nav-contact */
 .nav-contact a {
   display: flex;
   align-items: center;
-  gap: 5px; /* Spacing between icon and text */
+  gap: 5px;
   text-decoration: none;
   color: white;
   font-size: 14px;
@@ -123,14 +127,10 @@ body, html {
 
 /* Icons inside nav-contact */
 .nav-contact i {
-  font-size: 18px; /* Adjust icon size as needed */
+  font-size: 18px;
   color: white;
 }
 
-.nav-search-wrapper {
-  position: relative;
-  display: inline-block;
-}
 /* Search Button */
 .btn-search {
   background-color: white;
@@ -143,24 +143,10 @@ body, html {
   justify-content: center;
   align-items: center;
   transition: background 0.3s ease;
-  margin-left: 15px; /* Maintain this if you want horizontal offset */
-  margin-top: -35px; /* Adjust this value to move the button up/down */
+  margin-left: 15px;
+  margin-top: -5px;
 }
 
-.search-box.show {
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-}
-
-.search-box input {
-  border: none;
-  outline: none;
-  font-size: 14px;
-  width: 200px;
-}
-
-/* Hover effect for search button */
 .btn-search:hover {
   background-color: #eaeaea;
 }
@@ -170,77 +156,71 @@ body, html {
   width: 18px;
   height: 18px;
 }
-
-.nav-search-wrapper {
-  position: relative; /* for positioning the search box */
+.search-wrapper {
+  position: relative;
   display: inline-block;
 }
 
-/* Hidden by default */
-.search-box {
+.search-popup {
   position: absolute;
-  top: 32px;                /* below search icon */
-  right: -120px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  opacity: 1;
-  transform: translateY(-10px);
-  visibility: hidden;
+  top: 75px; /* Pushes the popup below the button */
+  right: 70px; /* Adjusts the popup to the left */
   background-color: white;
-  border: 1px solid #0b9cfd;
-  border-radius: 6px;
-  padding: 10px 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
-  z-index: 10;
+  padding: 10px;
+  border: 2px solid #007bff; /* Blue border */
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 1000;
 }
 
-.nav-search-wrapper:hover .search-box {
-  opacity: 2;
-  pointer-events: visibleFill;
-}
-
-/* Arrow pointing to the search button */
-.search-box::before {
-  content: '';
+/* Triangle Arrow */
+.search-popup::before {
+  content: "";
   position: absolute;
-  top: -8px; /* above the box */
+  top: -10px; /* Positions the arrow above the popup */
+  left: 50%; /* Centers the arrow horizontally */
+  transform: translateX(-50%); /* Adjusts for exact centering */
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent #007bff transparent; /* Blue arrow */
+}
+
+/* Inner triangle to create a layered arrow effect */
+.search-popup::after {
+  content: "";
+  position: absolute;
+  top: -8px; /* Slightly lower than the ::before arrow */
   left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 16px;
-  height: 16px;
-  background: #fff;
-  border-left: 0px solid #0b9cfd;;
-  border-top: 0px solid #0b9cfd;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
-  z-index: -2;
+  transform: translateX(-50%);
+  border-width: 0 9px 9px 9px;
+  border-style: solid;
+  border-color: transparent transparent white transparent; /* White inner triangle */
 }
 
-
-.search-box input {
-  border: 1px solid #2230f0;
+.search-popup input[type="text"] {
+  padding: 8px;
+  width: 200px;
+  border: 1px solid #007bff;
   border-radius: 4px;
-  outline: none;
-  padding: 6px 8px;
+  margin-right: 8px;
   font-size: 14px;
-  width: 180px;
+  color: #000;
 }
 
-.search-box .btn-submit {
-  background-color: #0078c8;
+.search-popup button {
+  background-color: #007bff;
   color: white;
   border: none;
+  padding: 8px 12px;
   border-radius: 4px;
-  padding: 6px 12px;
   cursor: pointer;
   font-size: 14px;
 }
 
-.search-box .btn-submit:hover {
-  background-color: #0f5ccf;
+.search-popup button:hover {
+  background-color: #0056b3;
 }
-
 
 /* Get In Touch Button */
 .btn-outline {

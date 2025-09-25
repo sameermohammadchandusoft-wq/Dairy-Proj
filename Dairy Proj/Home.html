@@ -1,74 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Farm Website</title>
-  <link rel="stylesheet" href="style.css">
-  
-  <!-- Add this to enable Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
 
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 </head>
-
-
 <body>
-  
-   <div id="header"></div>
-   
+  <!-- Header Placeholder -->
+  <div id="header"></div>
+ 
 
-   <!-- ===== BODY  (Load from body.html) ===== -->
+  <!-- Body Content -->
   <div id="body"></div>
-   
+  
+
+  <!-- Footer Content -->
+  <div id="footer-placeholder"></div>
 
  
- 
-<!-- ===== Footer Placeholder (Load from footer.html) ===== -->
-  <div id="footer"></div>
- 
-  <!-- ===== Footer Script ===== -->
-  <script>
-          // Fetch and insert footer content dynamically
-fetch("footer.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("footer").innerHTML = data;
-  });
-
-document.addEventListener("DOMContentLoaded", () => {
-  const backToTop = document.getElementById("backToTop");
- 
-  if (backToTop) {
-    // Show the button when scrolled more than 300px down
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        backToTop.style.display = "flex";
-      } else {
-        backToTop.style.display = "none";
-      }
-    });
- 
-    // Smooth scroll to the top when button is clicked
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    });
-  }
-});
- 
-   </script>
-
-   <script src="script.js"></script>
-
 
 </body>
-  <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
-  ↑
-</button>
-
-  
-
-
+<script src="script.js"></script>
 </html>

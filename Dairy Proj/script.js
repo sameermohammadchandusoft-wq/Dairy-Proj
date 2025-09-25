@@ -1,141 +1,157 @@
 
 
-    // Load header.html dynamically
-    fetch("header.html")
-    
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("header").innerHTML = data;
-         const searchBtn = document.querySelector('.btn-search');
-         const searchBox = document.querySelector('.search-box');
-
-      // Toggle search box on button click
-        searchBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // prevent click from reaching document
-        searchBox.classList.toggle('show');
-        });
-
-      // Hide search box when clicking outside
-        document.addEventListener('click', (e) => {
-        if (!searchBox.contains(e.target) && !searchBtn.contains(e.target)) {
-          searchBox.classList.remove('show');
-        }
-        });
-        });
-  
-
-
 document.addEventListener('DOMContentLoaded', () => {
-  const faqQuestions = document.querySelectorAll('.faq-question');
+  const searchBtn = document.querySelector('.btn-search');
+  const searchPopup = document.getElementById('searchPopup');
 
-  // Slide down animation
-  function slideDown(element, duration = 300) {
-    element.style.removeProperty('display');
-    let display = window.getComputedStyle(element).display;
-    if (display === 'none') display = 'block';
-    element.style.display = display;
+  // Toggle popup when clicking search icon
+  searchBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isVisible = searchPopup.style.display === 'block';
+    searchPopup.style.display = isVisible ? 'none' : 'block';
+  });
 
-    const height = element.offsetHeight;
-    element.style.overflow = 'hidden';
-    element.style.height = 0;
+  // Close popup when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!searchPopup.contains(e.target) && !searchBtn.contains(e.target)) {
+      searchPopup.style.display = 'none';
+    }
+  });
 
-    element.offsetHeight; // force repaint
-
-    element.style.transition = `height ${duration}ms ease`;
-    element.style.height = height + 'px';
-
-    setTimeout(() => {
-      element.style.removeProperty('height');
-      element.style.removeProperty('overflow');
-      element.style.removeProperty('transition');
-    }, duration);
-  }
-
-  // Slide up animation
-  function slideUp(element, duration = 300) {
-    element.style.height = element.offsetHeight + 'px';
-    element.offsetHeight; // force repaint
-    element.style.transition = `height ${duration}ms ease`;
-    element.style.height = 0;
-    element.style.overflow = 'hidden';
-
-    setTimeout(() => {
-      element.style.display = 'none';
-      element.style.removeProperty('height');
-      element.style.removeProperty('overflow');
-      element.style.removeProperty('transition');
-    }, duration);
-  }
-
-  // Open first question by default
-  if (faqQuestions.length > 0) {
-    const firstAnswer = faqQuestions[0].nextElementSibling;
-    faqQuestions[0].classList.add('active');
-    firstAnswer.style.display = 'block';
-  }
-
-  // Toggle FAQ
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', () => {
-      const answer = question.nextElementSibling;
-      const isActive = question.classList.contains('active');
-
-      // Close all other questions
-      faqQuestions.forEach(q => {
-        if (q !== question) {
-          q.classList.remove('active');
-          slideUp(q.nextElementSibling);
-        }
-      });
-
-      // Toggle clicked question
-      if (!isActive) {
-        question.classList.add('active');
-        slideDown(answer);
-      } else {
-        question.classList.remove('active');
-        slideUp(answer);
-      }
-    });
+  // Optional form submission
+  document.getElementById('searchForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const query = this.querySelector('input').value.trim();
+    if (query) {
+      console.log("Searching for:", query);
+    }
   });
 });
 
- fetch("body.html")
-      .then(res => res.text())
+
+
+    
+
+      fetch("header.html")
+      .then(response => response.text())
       .then(data => {
-        document.getElementById("body").innerHTML = data;
-        const wrapper = document.querySelector(".HBP-cards");
-        const prevBtn = document.getElementById("HBP-prev");
-        const nextBtn = document.getElementById("HBP-next");
+        document.getElementById("header").innerHTML = data;
 
-        let currentPage = 0;
-        const cards = document.querySelectorAll(".HBP-card");
-        const cardCount = cards.length;
-        const visibleCards = 3;
+        // ✅ Place this code inside the fetch callback
+        const searchBtn = document.querySelector('.btn-search');
+        const searchPopup = document.getElementById('searchPopup');
 
-        function updateSlider() {
-          const wrapperWidth = document.querySelector(".HBP-cards-wrapper").offsetWidth;
-          wrapper.style.transform = `translateX(-${currentPage * wrapperWidth}px)`;
-        }
+        // Toggle popup on button click
+        searchBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isVisible = searchPopup.style.display === 'block';
+          searchPopup.style.display = isVisible ? 'none' : 'block';
+        });
 
-        // Next → move one "page" (3 cards worth of width)
-        nextBtn.addEventListener("click", () => {
-          const totalPages = Math.ceil(cardCount / visibleCards);
-          if (currentPage < totalPages - 1) {
-            currentPage++;
-            updateSlider();
+        // Hide popup on outside click
+        document.addEventListener('click', (e) => {
+          if (!searchPopup.contains(e.target) && !searchBtn.contains(e.target)) {
+            searchPopup.style.display = 'none';
           }
-});
+        });
 
-// Prev → move back one "page"
-prevBtn.addEventListener("click", () => {
-  if (currentPage > 0) {
-    currentPage--;
-    updateSlider();
-  }
-});
-
+        // Optional: form submission logic
+        document.getElementById('searchForm').addEventListener('submit', function (e) {
+          e.preventDefault();
+          const query = this.querySelector('input').value.trim();
+          if (query) {
+            console.log("Searching for:", query);
+          }
+        });
       });
 
+// Fetch body content dynamically
+fetch("body.html")
+  .then(res => res.text())
+  .then(data => {
+    // Insert the fetched HTML content into the body
+    document.getElementById("body").innerHTML = data;
+
+    const nextBtn = document.querySelector(".next-btn");
+    const prevBtn = document.querySelector(".prev-btn");
+    const grid = document.querySelector(".grid");
+    const blogCards = document.querySelectorAll(".grid .blog-card");
+
+    let page = 0; // 0 = first 3 blogs, 1 = last 2 blogs
+
+    const showPage = () => {
+      blogCards.forEach((card, index) => {
+        if (page === 0 && index < 3) {
+          card.style.display = "block"; // show first 3
+        } else if (page === 1 && index >= 3) {
+          card.style.display = "block"; // show last 2
+        } else {
+          card.style.display = "none"; // hide others
+        }
+      });
+    };
+
+    // Show first 3 blogs initially
+    showPage();
+
+    // Next → go to page 2 (last 2 blogs)
+    nextBtn.addEventListener("click", () => {
+      if (page === 0) {
+        page = 1;
+        showPage();
+      }
+    });
+
+    // Prev → go back to page 1 (first 3 blogs)
+    prevBtn.addEventListener("click", () => {
+      if (page === 1) {
+        page = 0;
+        showPage();
+      }
+    });
+  })
+  .catch(error => {
+    console.error("Error loading content: ", error);
+  });
 
 
+
+
+
+  // Fetch and insert footer content dynamically
+fetch("footer.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("footer-placeholder").innerHTML = data;
+
+    // Now that the footer is inserted, add event listeners for the button
+    const backToTop = document.getElementById("backToTop");
+
+    if (backToTop) {
+      // Show the button when scrolled more than 300px down
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTop.style.display = "flex";
+        } else {
+          backToTop.style.display = "none";
+        }
+      });
+
+      // Smooth scroll to the top when button is clicked
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+    }
+  })
+  .catch(error => console.error('Error loading footer:', error));
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Any other DOM content logic you want to include can go here.
+});
+
+
+
+ 

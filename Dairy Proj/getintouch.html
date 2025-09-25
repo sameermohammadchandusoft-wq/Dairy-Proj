@@ -46,19 +46,26 @@
   </a>
 
   
-      <div class="nav-search-wrapper">
+       <!-- Wrapper to anchor popup relative to the button -->
+<div class="search-wrapper">
+      <!-- Search Button -->
       <button class="btn-search" aria-label="Search">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
       </button>
-      <div class="search-box">
-        <input type="text" placeholder="Type to search..." />
-        <button class="btn-submit">Search</button>
-      </div>
     </div>
+  </nav>
 
+  <!-- Search Popup -->
+  <div class="search-popup" id="searchPopup">
+    <form id="searchForm">
+      <input type="text" placeholder="Type to search..." />
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</div>
       
     </div>
   </nav>
@@ -81,22 +88,32 @@
 
   <!-- Contact Info -->
   <section class="contact-info">
-    <div class="contact-card">
+  <div class="contact-card">
+    <div class="card-header">
       <i class="fa-solid fa-envelope"></i>
       <h3>Mail us 24/7</h3>
-      <p>pbmldf@godmin.com<br>pbmldf@ngainfo.com</p>
     </div>
-    <div class="contact-card">
+    <p>pbmldf@godmin.com<br>pbmldf@ngainfo.com</p>
+  </div>
+
+  <div class="contact-card">
+    <div class="card-header">
       <i class="fa-solid fa-phone"></i>
       <h3>Call us 24/7</h3>
-      <p>Phone : (+65) 654-545-5418<br>Mobile : (+01) 654-545-1235</p>
     </div>
-    <div class="contact-card">
+    <p>Phone : (+65) 654-545-5418<br>Mobile : (+01) 654-545-1235</p>
+  </div>
+
+  <div class="contact-card">
+    <div class="card-header">
       <i class="fa-solid fa-location-dot"></i>
       <h3>Our Locations</h3>
-      <p>4621 Ripe Top, Arch St, Alaska<br>99798, USA main city.</p>
     </div>
-  </section>
+    <p>4621 Ripe Top, Arch St, Alaska<br>99798, USA main city.</p>
+  </div>
+</section>
+
+
 
   <!-- Form Section -->
   <section class="contact-form-section">
@@ -148,17 +165,7 @@
 
   
 
-   <div id="footer"></div>
-
-  <script>
-    // Load footer dynamically
-    fetch("footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer").innerHTML = data;
-      });
-  </script>
- <script src="script.js"></script>
-
+   <div id="footer-placeholder"></div>
 </body>
+<script src="script.js"></script>
 </html>

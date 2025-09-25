@@ -143,24 +143,10 @@ body, html {
   justify-content: center;
   align-items: center;
   transition: background 0.3s ease;
-  margin-left: 15px; /* Maintain this if you want horizontal offset */
-  margin-top: -5px; /* Adjust this value to move the button up/down */
+  margin-left: 15px;
+  margin-top: -5px;
 }
 
-.search-box.show {
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-}
-
-.search-box input {
-  border: none;
-  outline: none;
-  font-size: 14px;
-  width: 200px;
-}
-
-/* Hover effect for search button */
 .btn-search:hover {
   background-color: #eaeaea;
 }
@@ -170,77 +156,71 @@ body, html {
   width: 18px;
   height: 18px;
 }
-
-.nav-search-wrapper {
-  position: relative; /* for positioning the search box */
+.search-wrapper {
+  position: relative;
   display: inline-block;
 }
 
-/* Hidden by default */
-.search-box {
+.search-popup {
   position: absolute;
-  top: 32px;                /* below search icon */
-  right: -120px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  opacity: 1;
-  transform: translateY(-10px);
-  visibility: hidden;
+  top: 75px; /* Pushes the popup below the button */
+  right: 80px; /* Adjusts the popup to the left */
   background-color: white;
-  border: 1px solid #0b9cfd;
-  border-radius: 6px;
-  padding: 10px 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
-  z-index: 10;
+  padding: 10px;
+  border: 2px solid #007bff; /* Blue border */
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 1000;
 }
 
-.nav-search-wrapper:hover .search-box {
-  opacity: 2;
-  pointer-events: visibleFill;
-}
-
-/* Arrow pointing to the search button */
-.search-box::before {
-  content: '';
+/* Triangle Arrow */
+.search-popup::before {
+  content: "";
   position: absolute;
-  top: -8px; /* above the box */
+  top: -10px; /* Positions the arrow above the popup */
+  left: 50%; /* Centers the arrow horizontally */
+  transform: translateX(-50%); /* Adjusts for exact centering */
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent #007bff transparent; /* Blue arrow */
+}
+
+/* Inner triangle to create a layered arrow effect */
+.search-popup::after {
+  content: "";
+  position: absolute;
+  top: -8px; /* Slightly lower than the ::before arrow */
   left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 16px;
-  height: 16px;
-  background: #fff;
-  border-left: 0px solid #0b9cfd;;
-  border-top: 0px solid #0b9cfd;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
-  z-index: -2;
+  transform: translateX(-50%);
+  border-width: 0 9px 9px 9px;
+  border-style: solid;
+  border-color: transparent transparent white transparent; /* White inner triangle */
 }
 
-
-.search-box input {
-  border: 1px solid #2230f0;
+.search-popup input[type="text"] {
+  padding: 8px;
+  width: 200px;
+  border: 1px solid #007bff;
   border-radius: 4px;
-  outline: none;
-  padding: 6px 8px;
+  margin-right: 8px;
   font-size: 14px;
-  width: 180px;
+  color: #000;
 }
 
-.search-box .btn-submit {
-  background-color: #0078c8;
+.search-popup button {
+  background-color: #007bff;
   color: white;
   border: none;
+  padding: 8px 12px;
   border-radius: 4px;
-  padding: 6px 12px;
   cursor: pointer;
   font-size: 14px;
 }
 
-.search-box .btn-submit:hover {
-  background-color: #0f5ccf;
+.search-popup button:hover {
+  background-color: #0056b3;
 }
-
 
 /* Get In Touch Button */
 .btn-outline {
@@ -345,21 +325,22 @@ section.hero {
   display: flex;
   justify-content: center;
   gap: 30px;
-  padding: 50px 20px;
-  flex-wrap: wrap;
-  background-color: #f9f9f9;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ddd; /* thin dividing line */
 }
+
 
 .contact-card {
   background: #fff;
   padding: 35px;
-  text-align: center;
   border-radius: 25px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   width: 320px;
   position: relative;
   transition: transform 0.3s, box-shadow 0.3s;
   overflow: hidden;
+  text-align: left; /* align content properly */
 }
 
 .contact-card:hover {
@@ -367,20 +348,27 @@ section.hero {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
-.contact-card i {
-  font-size: 2rem;
-  color: #fff;
-  background-color: #0f6cd9;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  border-radius: 50%;
-  display: inline-block;
+/* Flex container for icon + heading */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin-bottom: 15px;
 }
 
-.contact-card h3 {
-  margin: 15px 0;
+.card-header i {
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: #0f6cd9;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.card-header h3 {
+  margin: 0;
   font-size: 1.3rem;
   color: #222;
 }
@@ -389,7 +377,11 @@ section.hero {
   font-size: 1rem;
   color: #555;
   line-height: 1.5;
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd; /* thin line above paragraph */
 }
+
 
 .contact-card::after {
   content: '↗';
@@ -405,6 +397,7 @@ section.hero {
   color: #0056b3;
   transform: translateY(-3px);
 }
+
 
 
 /* -----------------------------
@@ -614,37 +607,6 @@ body {
   box-sizing: border-box;
   position: relative;
 }
- /* Back to Top Button */
-.back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 45px;
-  height: 45px;
-  background: #0078c8;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  font-size: 25px;
-  font-weight: bold;
-  cursor: pointer;
-  display: none; /* hidden by default */
-  z-index: 1000;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  transition: background 0.3s ease;
- 
-  /* Center the arrow perfectly */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  padding: 0;
-}
- 
-.back-to-top:hover {
-  background: #005a94;
-}
-
 
 /* Top blue strip */
 .FTR-top-strip {
@@ -821,5 +783,35 @@ body {
   .FTR-headline { font-size:22px; }
   .FTR-bottom { flex-direction:column; align-items:flex-start; gap:8px; padding-top:12px; }
 }
+ /* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  background: #0078c8;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  display: none; /* hidden by default */
+  z-index: 1000;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
  
+  /* Center the arrow perfectly */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+ 
+.back-to-top:hover {
+  background: #005a94;
+}
+
 

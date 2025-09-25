@@ -1,11 +1,15 @@
-
-<script src="script.js"></script>
-
 <header class="hero-section">
   <nav class="navbar">
     <div class="logo">
-      <img src="images/logofix2 (1).png" alt="Logo">
+      <img src="images/logofix2 (1).png" alt="Logo" />
     </div>
+
+    <div class="get-in-touch-wrapper">
+      <a href="getintouch.html" class="get-in-touch">
+        Get In Touch <img src="images/geticon.jpg" alt="arrow" />
+      </a>
+    </div>
+
     <ul class="nav-menu">
       <li><a href="Home.html">Home</a></li>
       <li><a href="products.html">Products</a></li>
@@ -13,56 +17,59 @@
       <li><a href="blogs.html">Blogs</a></li>
       <li><a href="aboutus.html">About Us</a></li>
       <li><a href="#">Farm Visit</a></li>
-      <li><a href="">Contact Us</a></li>
+      <li><a href="#">Contact Us</a></li>
     </ul>
-    <div class="nav-contact">
-  <a href="tel:+910123456789">
-    <i class="fa fa-phone" aria-hidden="true"></i>
-    <span>
-      Call us Now<br>
-      +91 01234 56789
-    </span>
-  </a>
-</div>
 
-      <div class="nav-search-wrapper">
+    <div class="nav-contact">
+      <a href="tel:+910123456789">
+        <i class="fa fa-phone" aria-hidden="true"></i>
+        <span>
+          Call us Now<br />
+          +91 01234 56789
+        </span>
+      </a>
+<!-- Wrapper to anchor popup relative to the button -->
+<div class="search-wrapper">
+      <!-- Search Button -->
       <button class="btn-search" aria-label="Search">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
       </button>
-      <div class="search-box">
-        <input type="text" placeholder="Type to search..." />
-        <button class="btn-submit">Search</button>
-      </div>
-    </div>
-
-      
     </div>
   </nav>
-  <div class="get-in-touch-wrapper">
-  <!-- OUTSIDE NAV -->
-  <a href="getintouch.html" class="get-in-touch">
-    Get In Touch <img src="images/geticon.jpg" alt="arrow"></img>
-  </a>
-</div>
- 
 
+  <!-- Search Popup -->
+  <div class="search-popup" id="searchPopup">
+    <form id="searchForm">
+      <input type="text" placeholder="Type to search..." />
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</div>
+
+  <!-- Hero Content -->
   <div class="hero-content">
     <button class="tagline-btn">Believe in Quality</button>
     <h1>Quality Trust:<br> Direct to the Farm</h1>
     <p>We are passionate about what we do. We love our cows and are happy to produce a healthy wholesome product like milk.</p>
-    <button class="cta-btn">Contact Us  ↗</button>
+    <button class="cta-btn">Contact Us ↗</button>
   </div>
 </header>
+
+<!-- Footer Placeholder -->
 <div id="footer"></div>
 
-  <script>
-    // Load footer dynamically
-    fetch("footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer").innerHTML = data;
-      });
-  </script>
+<!-- Footer Loader -->
+<script>
+  fetch("footer.html")
+    .then((res) => res.text())
+    .then((data) => {
+      document.getElementById("footer").innerHTML = data;
+    });
+    
+</script>
+<script src="include.js"></script>
+
+
