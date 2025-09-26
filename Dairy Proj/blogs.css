@@ -316,9 +316,30 @@ section.hero {
   margin: 36px auto;        /* centers horizontally */
   padding: 0 22px;          /* internal spacing */
   box-sizing: border-box;   /* include padding in width */
-  text-align: center;       /* optional: center inline content like text */
+  text-align: center;
+         /* optional: center inline content like text */
 }
 
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center; /* center buttons horizontally */
+  margin: 20px 0;          /* 👈 adds gap above & below */
+}
+
+.pill {
+  padding: 8px 16px;
+  background: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  border: none;   /* 👈 removes the border */
+}
+.pill:hover {
+  background: #1d3111;
+  color: #fff;
+}
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .container {
@@ -331,29 +352,7 @@ section.hero {
     padding: 0 12px;
   }
 }
-/* Filters */
-.filters {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 26px 0;
-}
 
-/* Pills */
-.pill {
-  background: transparent;
-  border: 1px solid #d9d9d0;
-  padding: 10px 22px;  /* slightly bigger */
-  border-radius: 24px;
-  font-weight: 600;
-  color: #333;
-}
-.pill.active {
-  background: var(--green);
-  color: #fff;
-  border-color: var(--green);
-}
 
 /* Grid */
 .grid {
@@ -522,14 +521,14 @@ section.hero {
   width:34px;
   height:34px;
   border-radius:50%;
-  background: rgba(255,255,255,0.18);
+  background: rgb(255, 255, 255);
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#fff;
+  color:#000000;
 }
 .FTR-top-phone a, .FTR-top-email a {
-  color:#fff;
+  color:#ffffff;
   text-decoration:none;
   font-weight:600;
   font-size:13px;
@@ -626,7 +625,7 @@ section.hero {
  
 /* Legal row (inside right column) */
 .FTR-bottom {
-  border-top: 1px solid #e9f0f3;
+  border-top: 1px solid #486f80;
   padding-top: 16px;
   display:flex;
   justify-content:space-between;
