@@ -1,38 +1,51 @@
+header section 
 /* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+ 
 body, html {
   font-family: 'Segoe UI', sans-serif;
   width: 100%;
-  height: 100%;
+  height: 105%;
   color: white;
   background: #f4f4f4; /* Light background to see the curve effect */
 }
-
+ 
 /* Hero Section with Clip-Path */
 .hero-section {
+  --r: 20px;  /* smoother outer radius */
+  --s: 25px;  /* inner curve close to radius */
+  --x: 100px;   /* small offset for balance */
+  --y: 20px;   /* small offset for balance */
+ 
+  width: calc(100% - 28px); /* account for left+right margin */
+  height: 600px;
+ 
+  margin: 8px; /* equal thin spacing on all sides */
+ 
   background: url('images/BG.jpg') no-repeat center center/cover;
-  height: 100vh;
-  width: 100%;
-  position: relative;
-  padding: 0px 80px; /* Add padding around the content */
-  overflow: hidden;
+  background-size: 100%; /* Zoom in the image */
+  border-radius: var(--r);
  
-  /* Adding Borders to All Four Sides */
-  border: 10px solid #f8f6f6; /* Change color as needed */
-  box-sizing: border-box; /* Ensures padding and border do not affect the total width/height */
+  --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%);
+  --_g:conic-gradient(at calc(100% - var(--r)) var(--r),#0000 25%,#f7f3f3 0);
+  --_d:(var(--s) + var(--r));
  
-  /* Border-radius for curved corners */
-  border-top-right-radius: 0px;
-  border-top-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  border-bottom-left-radius: 30px;
+  mask:
+    calc(100% - var(--_d) - var(--x)) 0 var(--_m),
+    100% calc(var(--_d) + var(--y)) var(--_m),
+    radial-gradient(var(--s) at 100% 0,#0000 99%,#f0eded calc(100% + 1px))
+      calc(-1*var(--r) - var(--x)) calc(var(--r) + var(--y)),
+    var(--_g) calc(-1*var(--_d) - var(--x)) 0,
+    var(--_g) 0 calc(var(--_d) + var(--y));
+  mask-repeat: no-repeat;
 }
-
+ 
+ /*
+🎯 Summary
 .hero-section::after {
   content: "";
   position: absolute;
@@ -44,7 +57,7 @@ body, html {
   border-bottom-left-radius: 30px;
   z-index: 2;
 }
-
+ */
 /* Navbar */
 .navbar {
   display: flex;
@@ -52,27 +65,27 @@ body, html {
   align-items: center;
   padding: 5px 20px; /* Reduced padding (from 40px to 20px) */
 }
-
+ 
 /* Logo */
 .logo img {
-  height: 80px;
-  margin-left: 0; /* Align logo with the left */
+  height: 100px;
+  margin-left: 120px; /* Align logo with the left */
 }
-
+ 
 /* Navbar Menu */
 .nav-menu {
   list-style: none;
   display: flex;
   gap: 20px; /* Space between menu items */
-  margin-left: 20px; /* Reduced margin left to bring items closer */
+  margin-left: 28px; /* Reduced margin left to bring items closer */
   padding: 0;
   margin-top: -50px; /* Adjusted space for vertical alignment */
 }
-
+ 
 .nav-menu li {
   position: relative;
 }
-
+ 
 /* Navbar Menu */
 .nav-menu li a {
   text-decoration: none;
@@ -84,7 +97,7 @@ body, html {
   display: flex;
   align-items: center;
 }
-
+ 
 .nav-menu li a::before {
   content: '•';
   position: absolute;
@@ -95,21 +108,21 @@ body, html {
   transform: translateY(-50%);
   line-height: 1;
 }
-
+ 
 .nav-menu li a:hover {
   color: yellow;
 }
-
+ 
 /* Contact Section */
 .nav-contact {
   display: flex;
   align-items: center;
   gap: 16px; /* Spacing between phone, search, button */
   font-family: Arial, sans-serif;
-  margin-left: 160px; /* Reduced to shift the contact section left */
+  margin-left: 60px; /* Reduced to shift the contact section left */
   margin-top: -40px; /* Adjusted vertical position */
 }
-
+ 
 /* Links inside nav-contact */
 .nav-contact a {
   display: flex;
@@ -120,13 +133,13 @@ body, html {
   font-size: 14px;
   font-weight: 500;
 }
-
+ 
 /* Icons inside nav-contact */
 .nav-contact i {
   font-size: 18px; /* Adjust icon size as needed */
   color: white;
 }
-
+ 
 /* Search Button */
 .btn-search {
   background-color: white;
@@ -142,12 +155,12 @@ body, html {
   margin-left: 10px; /* Maintain this if you want horizontal offset */
   margin-top: -5px; /* Adjust this value to move the button up/down */
 }
-
+ 
 /* Hover effect for search button */
 .btn-search:hover {
   background-color: #eaeaea;
 }
-
+ 
 .btn-search svg {
   stroke: #007bff;
   width: 18px;
@@ -157,11 +170,11 @@ body, html {
   position: relative;
   display: inline-block;
 }
-
+ 
 .search-popup {
   position: absolute;
-  top: 75px; /* Pushes the popup below the button */
-  right: 50px; /* Adjusts the popup to the left */
+  top: 95px; /* Pushes the popup below the button */
+  right: 90px; /* Adjusts the popup to the left */
   background-color: white;
   padding: 10px;
   border: 2px solid #007bff; /* Blue border */
@@ -170,7 +183,7 @@ body, html {
   display: none;
   z-index: 1000;
 }
-
+ 
 /* Triangle Arrow */
 .search-popup::before {
   content: "";
@@ -181,8 +194,9 @@ body, html {
   border-width: 0 10px 10px 10px;
   border-style: solid;
   border-color: transparent transparent #007bff transparent; /* Blue arrow */
-}
 
+}
+ 
 /* Inner triangle to create a layered arrow effect */
 .search-popup::after {
   content: "";
@@ -194,7 +208,7 @@ body, html {
   border-style: solid;
   border-color: transparent transparent white transparent; /* White inner triangle */
 }
-
+ 
 .search-popup input[type="text"] {
   padding: 8px;
   width: 200px;
@@ -204,7 +218,7 @@ body, html {
   font-size: 14px;
   color: #000;
 }
-
+ 
 .search-popup button {
   background-color: #007bff;
   color: white;
@@ -214,15 +228,14 @@ body, html {
   cursor: pointer;
   font-size: 14px;
 }
-
+ 
 .search-popup button:hover {
   background-color: #0056b3;
 }
-
-
+ 
 /* Get In Touch Button */
 .btn-outline {
-  padding: 10px 20px;
+  padding: 10px 10px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -231,23 +244,23 @@ body, html {
   font-weight: bold;
   transition: background 0.3s ease;
 }
-
+ 
 .btn-outline:hover {
   background-color: #0056b3;
 }
-
+ 
 .get-in-touch {
   position: absolute;
-  top: 13px;      
-  right: 0px;   /* moved 20px left from previous -50px */
+  top: 18px;      
+  right: 18px;   /* moved 20px left from previous -50px */
   background: #2471ff;
   color: #fff;
-  padding: 10px 20px;
+  padding: 10px 10px;
   border-radius: 45px;
   font-weight: bold;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   z-index: 15;
   text-decoration: none;
@@ -263,29 +276,28 @@ body, html {
   width: 16px;
   height: 16px;
 }
+ 
 /* Hero Content */
 .hero-content {
   position: absolute;
   top: 50%;
-  left: 220px;  /* increase from previous value to move right */
+  left: 150px; /* Adjust this value to move the content right */
   transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  max-width: 500px; /* Optional: adjust max width based on your content */
 }
-
+ 
 .hero-content h1 {
   font-size: 48px;
   line-height: 1.2;
   margin: 20px 0;
 }
-
+ 
 .hero-content p {
   font-size: 16px;
   color: #ddd;
   margin-bottom: 30px;
 }
-
+ 
 .cta-btn {
   padding: 12px 24px;
   background-color: white;
@@ -295,7 +307,17 @@ body, html {
   font-weight: bold;
   cursor: pointer;
 }
-
+.cta-btn img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: inline-block;
+ 
+  /* Move the image slightly downward */
+  position: relative;
+  top: 4px;
+  right: -5px;           /* Adjust this value to move further down */
+}
 .tagline-btn {
   background: transparent;
   border: 1px solid white;
@@ -306,85 +328,139 @@ body, html {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 170px;
-  height: 70px;
-  background: #fff;
-  border-bottom-left-radius: 30px;
-  z-index: 2;
-}
+ 
 
- 
-.container {
-  max-width: 1200px;   /* adjust width */
-  margin: 0 auto;      /* centers content */
-  padding: 10px 10px;     /* adds side spacing */
-}
- 
-/* Features Top */
+
+/* Layout */
 .features {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-bottom: 50px;
+  gap: 25px;
+  margin-bottom: 40px;
+  max-width: 1200px;
+  padding: 0 15px;  
 }
+ 
+/* Outer card container */
+.feature-card {
+  --r: 20px;
+  --s: 30px;
+  --x: 0px;
+  --y: 0px;
+ 
+  position: relative;
+  width: 300px;
+  height: 120px;
+  overflow: visible; /* Important to allow arrow outside */
+}
+ 
 
+
+
+/* Inner card with masked curve */
+.feature-content {
+   width: 90%;
+  height: 90%;
+  padding: -5px;  
+  padding: 20px;
+  background: #fdfdfd;
+  border-radius: var(--r);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+ 
+  --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%, #0000 72%);
+  --_g:conic-gradient(from 90deg at calc(100% - var(--r)) calc(100% - var(--r)), #0000 25%, #000 0);
+  --_d:(var(--s) + var(--r));
+  mask:
+    calc(100% - var(--_d) - var(--x)) 100% var(--_m),
+    100% calc(100% - var(--_d) - var(--y)) var(--_m),
+    radial-gradient(var(--s) at 100% 100%, #0000 99%, #000 calc(100% + 1px))
+    calc(-1 * var(--r) - var(--x)) calc(-1 * var(--r) - var(--y)),
+    var(--_g) calc(-1 * var(--_d) - var(--x)) 0,
+    var(--_g) 0 calc(-1 * var(--_d) - var(--y));
+  mask-repeat: no-repeat;
+}
+ 
+/* Icon and title row */
 .feature-header {
-  display: flex;               /* places icon and heading in a row */
-  align-items: center;         /* vertically centers text with icon */
-  gap: 12px;                   /* space between icon and heading */
-  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding-bottom: 10px;
 }
-
+ 
 .feature-header i {
   font-size: 1.3rem;
-  color: #ffffff;
+  width: 2.8rem;
+  height: 2.8rem;
   background-color: #0a73c0;
-  width: 50px;
-  height: 50px;
+  color: white;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  flex-shrink: 0;              /* prevent icon from shrinking */
 }
-
-.feature-header h3 {
-  margin: 0;                   /* remove default margin */
-  font-size: 1.1rem;
-  color: #222;
-  text-align: left;            /* align heading left inside flex */
-}
-
-
  
-.feature-card {
-  position: relative;
-  background: #fff;
-  padding: 20px;
-  text-align: center; /* header/icon stays centered */
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+.feature-header h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #000;
+  line-height: 1.2;
 }
-
+ 
+/* Paragraph */
+.feature-content p {
+  font-size: 0.2rem;
+  margin-top: 20px;
+  padding-top: 8px;
+  color: #666;
+  position: relative;
+}
+ 
+.feature-content p::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+}
+ 
+/* Arrow outside the curve */
 .read-mores {
   position: absolute;
-  bottom: 8px;   /* distance from bottom */
-  right: 12px;    /* distance from right */
-  font-size: 1.2rem;
+  bottom: -28px;
+  right: -15px;
+  font-size: 1.0rem;       /* slightly smaller icon */
   color: #0a73c0;
+  background-color: white;
+  padding: 6px 6px;       /* smaller padding */
+  border-radius: 50%;      /* keep circle shape */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
   text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.3s ease;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  width: 30px;             /* set fixed width */
+  height: 30px;            /* set fixed height */
 }
-
+ 
+/* Image inside the read-more button */
+.read-mores img {
+  width: 16px;                  /* adjust image size */
+  height: 16px;
+  object-fit: contain;         /* ensures no distortion */
+  display: block;
+}
 .read-mores:hover {
-  transform: translate(3px, -3px); /* small movement on hover */
+  background-color: #eeeaea;
 }
+ 
+ 
 .divider {
   border: 0;
   height: 1px;
@@ -402,112 +478,178 @@ body, html {
 
 
 
-/* About Content */
+/* Overall Layout */
 .about-content {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 40px;
+  padding: 0 180px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  margin-top: 0px; /* 👈 Moves the section upwards */
+  margin-bottom: 5px;
 }
-
-/* Left Image */
-.about-image {
+ 
+/* Wrapper for image + nutrition box */
+.about-image-wrapper {
   position: relative;
-  flex: 1;
+  display: inline-block;
 }
-
+ 
+/* Curved Image Container */
+.about-image {
+  margin-top: 20px;
+  width: 500px;
+  aspect-ratio: 2;
+  border-radius: 20px;
+ 
+  --r: 15px;
+  --s: 15px;
+  --x: 180px;
+  --y: 130px;
+ 
+  --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%);
+  --_g:conic-gradient(from 90deg at calc(100% - var(--r)) calc(100% - var(--r)), #0000 25%, #000 0);
+  --_d:(var(--s) + var(--r));
+  
+ 
+  mask:
+    calc(100% - var(--_d) - var(--x)) 100% var(--_m),
+    100% calc(100% - var(--_d) - var(--y)) var(--_m),
+    radial-gradient(var(--s) at 100% 100%, #0000 99%, #000 calc(100% + 1px))
+      calc(-1 * var(--r) - var(--x)) calc(-1 * var(--r) - var(--y)),
+    var(--_g) calc(-1 * var(--_d) - var(--x)) 0,
+    var(--_g) 0 calc(-1 * var(--_d) - var(--y));
+ 
+  mask-repeat: no-repeat;
+}
+ 
+/* Image inside curved box */
 .about-image img {
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  height: auto;
+  display: block;
+  border-radius: 10px;
 }
-
+ 
+/* Nutrition Count Box */
 .nutrition-count {
   position: absolute;
-  bottom: 20px;
-  right: 20px;   /* ✅ move to right side */
+  bottom: 0px;    /* Push it below image */
+  right: 2px;     /* Push it to right outside image */
+ 
+  width: 150px;
+  height: 100px;
   background: #0a73c0;
-  color: #fff;
-  padding: 15px 25px;
-  border-radius: 12px;
+  border-radius: 10px;
   text-align: center;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
-
+ 
+/* Text inside nutrition box */
 .nutrition-count h2 {
   font-size: 2rem;
+  color: #fff;
   margin: 0;
 }
-
+.nutrition-count .divider {
+  width: 100px;             /* adjust line length */
+  height: 1px;             /* thin line */
+  background-color: #ccc;  /* line color */
+  margin: 8px auto;        /* space above/below and center */
+}
+ 
 .nutrition-count p {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  color: #fff;
   margin: 0;
 }
-
-/* Right Text */
+ 
+/* Right Side Text Content */
 .about-text {
   flex: 1;
 }
-
+ 
 .who-we-are {
   font-size: 0.9rem;
-  text-transform: uppercase;
-  color: #666;
-  display: block;
-  margin-bottom: 10px;
+  color: #2083f3;
+  background-color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  margin: 30px 0 50px 0; /* reduced bottom margin */
+  display: inline-block;
 }
 
 .about-text h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin: 0 0 3
+  0px 0; /* remove top margin if needed */
   line-height: 1.3;
-  color: #000; /* Black text */
+  color: #000;
 }
-
-
+ 
 .about-text .highlight {
   color: #0a73c0;
 }
-
+ 
 .about-text p {
+  font-size: 0.8rem;
   margin-bottom: 20px;
   color: #555;
-  line-height: 1.6;
+  line-height: 1.4;
 }
-
-/* Points */
+ 
+ 
+ 
+ 
+/* Points Container */
 .about-points {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  gap: 50px; /* Space between the points */
+  flex-wrap: wrap; /* Allows points to wrap on smaller screens */
 }
-
+ 
+/* Point Container */
 .point {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-start; 
+  gap: 4px; 
+  flex: 1; 
+  margin-bottom: 50px;   /* Added bottom margin */
 }
 
-.point i {
-  font-size: 1.5rem;
-  color: #0a73c0;
-  margin-top: 4px;
+/* Icon */
+.point img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0px;
 }
 
-.point {
-  display: block; /* ensures block flow (h4 on top, p below) */
-}
-
+/* Heading (h4) */
 .point h4 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #000;
+  display: block;
 }
 
+/* Paragraph (p) */
 .point p {
   margin: 5px 0 0;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #666;
+  display: block;
 }
+
 
 /* -------------------- RESPONSIVE -------------------- */
 @media (max-width: 1024px) {
@@ -596,28 +738,77 @@ body, html {
 .product-card {
   background: #fff;
   color: #333;
-  border-radius: 16px;
-  overflow: hidden;
+  border-radius: 16px;       /* rounded outer corners */
+  overflow: hidden;          /* ensures child elements follow radius */
   flex: 1 1 calc(33% - 20px);
   min-width: 280px;
   max-width: 340px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
   transition: transform 0.3s ease;
-}
 
-.product-card:hover {
-  transform: translateY(-8px);
+  --r: 0px; /* the radius */
+  --s: 15px; /* size of inner curve */
+  --x: 10px; /* horizontal offset (no percentane) */
+  --y: 10px; /* vertical offset (no percentage) */
+  width: 250px;
+  height: 450px;
+  aspect-ratio: 1;
+  
+  border-radius: var(--r);
+  --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%);
+  --_g:conic-gradient(from 90deg at calc(100% - var(--r)) calc(100% - var(--r)),#0000 25%,#000 0);
+  --_d:(var(--s) + var(--r));
+  mask:
+    calc(100% - var(--_d) - var(--x)) 100% var(--_m),
+    100% calc(100% - var(--_d) - var(--y)) var(--_m),
+    radial-gradient(var(--s) at 100% 100%,#0000 99%,#000 calc(100% + 1px))
+     calc(-1*var(--r) - var(--x)) calc(-1*var(--r) - var(--y)),
+    var(--_g) calc(-1*var(--_d) - var(--x)) 0,
+    var(--_g) 0 calc(-1*var(--_d) - var(--y));
+  mask-repeat: no-repeat;
 }
 
 .product-card img {
   width: 100%;
-  height: 220px;        /* fixed size */
-  object-fit: contain;  /* no cropping */
-  background: #fff;     /* filler background */
-  padding: 10px;        /* optional to center nicely */
+  height: 200px;              /* fixed size */
+  object-fit: contain;        /* keeps full image visible */
+  background: #fff;           /* filler background */
+  padding: 5px;               /* spacing around image */
   border-bottom: 1px solid #eee;
+  border-radius: 16px 16px 0 0; /* smooth top corners only */
 }
-
+/* Arrow outside the curve */
+.read-more {
+  position: absolute;
+  bottom: -28px;
+  right: -15px;
+  font-size: 1.0rem;       /* slightly smaller icon */
+  color: #0a73c0;
+  background-color: white;
+  padding: 6px 6px;       /* smaller padding */
+  border-radius: 50%;      /* keep circle shape */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  width: 30px;             /* set fixed width */
+  height: 30px;            /* set fixed height */
+}
+ 
+/* Image inside the read-more button */
+.read-more img {
+  width: 16px;                  /* adjust image size */
+  height: 16px;
+  object-fit: contain;         /* ensures no distortion */
+  display: block;
+}
+.read-more:hover {
+  background-color: #eeeaea;
+}
 
 .product-info {
   padding: 20px;
@@ -1093,6 +1284,7 @@ body, html {
   object-fit: cover;
   border-top-left-radius: 22px;
   border-bottom-left-radius: 22px;
+  
   background: #222;
   display: block;
 }
@@ -1104,6 +1296,8 @@ body, html {
   padding: 44px 50px 36px 44px;
   border-top-right-radius: 20px;   /* increased radius for soft corners */
   border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1290,18 +1484,20 @@ body, html {
  
 .farm-banner {
   position: relative;
-  width: 100%;
-  height: 250px;
+  width: 95%;          /* decrease stretch (was 100%) */
+  height: 280px;       /* reduced height a bit */
   overflow: hidden;
   border-radius: 15px;
+  margin: 20px auto;   /* center horizontally */
 }
-
+ 
 .farm-banner img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;   /* keeps proportions, fills nicely */
   border-radius: 15px;
 }
+
 
 .banner-content {
   position: absolute;

@@ -335,10 +335,6 @@
 }
 
 
-
-
-
-
 /* Features Section */
 .features {
   display: grid;
@@ -518,23 +514,25 @@
 
 .cart-btn {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
-  width: 40px;
-  height: 40px;
+  bottom: 0;       /* start from bottom edge */
+  right: 0;        /* start from right edge */
+  transform: translate(40%, 40%); /* push it OUT into the cut */
+  background: #0078c8;
   border: none;
-  background: #0072ce;
-  color: #fff;
   border-radius: 50%;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 2;
 }
 
-.cart-btn:hover {
-  background: #005bb5;
+.cart-btn i {
+  color: #1f1d1d;
+  font-size: 18px;
 }
 
 /* === About Us Section === */
@@ -669,13 +667,31 @@
 }
 
 .product-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-  text-align: center;
   position: relative;
-  transition: transform 0.3s ease;
+  border-radius: 20px;
+  padding: 16px;
+  text-align: center;
+  overflow: visible;
+  --r: 20px; /* the radius */
+  --s: 22px; /* size of inner curve */
+  --x: 11px; /* horizontal offset (no percentane) */
+  --y: 11px; /* vertical offset (no percentage) */
+ 
+  width: 250px;
+  aspect-ratio: 1;
+  background: rgb(83, 15, 15);
+  border-radius: var(--r);
+  --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%);
+  --_g:conic-gradient(from 90deg at calc(100% - var(--r)) calc(100% - var(--r)),#0000 25%,#000 0);
+  --_d:(var(--s) + var(--r));
+  mask:
+    calc(100% - var(--_d) - var(--x)) 100% var(--_m),
+    100% calc(100% - var(--_d) - var(--y)) var(--_m),
+    radial-gradient(var(--s) at 100% 100%,#0000 99%,#000 calc(100% + 1px))
+     calc(-1*var(--r) - var(--x)) calc(-1*var(--r) - var(--y)),
+    var(--_g) calc(-1*var(--_d) - var(--x)) 0,
+    var(--_g) 0 calc(-1*var(--_d) - var(--y));
+  mask-repeat: no-repeat;
 }
 
 .product-card:hover {
@@ -712,21 +728,28 @@
 
 .cart-btn {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
-  background: #0077ff;
-  color: #fff;
+  bottom: 0;       /* start from bottom edge */
+  right: 0;        /* start from right edge */
+  transform: translate(40%, 40%); /* push it OUT into the cut */
+  background: #0078c8;
   border: none;
-  padding: 10px 12px;
   border-radius: 50%;
-  font-size: 16px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 2;
 }
 
-.cart-btn:hover {
-  background: #005fcc;
+.cart-btn i {
+  color: #1f1d1d;
+  font-size: 18px;
 }
+
+
 
 /* Pagination */
 .pagination {
@@ -957,12 +980,16 @@
   }
 }
 
+ 
+
 /* Blog Section */
 .blog-section {
   padding: 60px 80px;
   background: #f9f9f4;
+  overflow: hidden; /* Prevents scrollbars when using translate */
 }
 
+/* Section Tag Styling */
 .blog-section .section-tag {
   display: inline-block;
   font-size: 0.9rem;
@@ -974,6 +1001,7 @@
   margin-bottom: 12px;
 }
 
+/* Blog Header Styling */
 .blog-header {
   display: flex;
   justify-content: space-between;
@@ -987,6 +1015,7 @@
   color: #222;
 }
 
+/* Blog Navigation Button Styling */
 .blog-nav button {
   background: #fff;
   border: 1px solid #ddd;
@@ -1001,98 +1030,101 @@
   background: #eaeaea;
 }
 
-/* Blog Wrapper */
-.blog-wrapper {
+/* Flexbox container for horizontal scrolling */
+.grid {
   display: flex;
-  gap: 24px;
-  overflow-x: auto;   /* scroll if more blogs */
-  scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
+  transition: transform 0.5s ease; /* Smooth sliding */
+  gap: 26px;
 }
 
-.blog-wrapper::-webkit-scrollbar {
-  height: 6px;
-}
-.blog-wrapper::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 3px;
-}
-
-/* Blog Card */
 .blog-card {
-  flex: 0 0 300px;  /* card width */
+  flex: 0 0 380px; /* Set the width of each card */
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  scroll-snap-align: start;
   transition: transform 0.3s ease;
 }
 
 .blog-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px); /* Hover effect for blog cards */
 }
 
-.blog-img {
+.thumb {
   position: relative;
-  height: 200px;
+  border-radius: 16px;
   overflow: hidden;
+  height: 250px;
 }
 
-.blog-img img {
+.thumb img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.blog-img .category {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #fff;
-  color: #2ecc71;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 20px;
-}
-
-.blog-content {
-  padding: 16px;
-}
-
-.blog-content .meta {
-  font-size: 0.8rem;
-  color: #777;
-  margin-bottom: 8px;
-}
-
-.blog-content h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #222;
-  line-height: 1.4;
-}
-.blog-wrapper {
-  display: flex;
-  justify-content: space-between; /* spread evenly */
-  gap: 24px;
-  overflow: hidden; /* remove scrolling */
-}
-
-.blog-card {
-  flex: 1;              /* each card same width */
-  max-width: 300px;     /* optional: limit width */
-  background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  overflow: hidden;
-  transition: transform 0.3s ease;
 }
 
-.blog-card:hover {
-  transform: translateY(-5px);
+.tag {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: #f0f7f0;
+  color: var(--green);
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 12px;
 }
+
+.read-more {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  background: var(--accent);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.meta {
+  display: flex;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 10px 0;
+}
+
+.title {
+  margin: 6px 0 18px;
+  font-size: 16px;
+  color: #20323a;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .thumb img {
+    height: 180px;
+  }
+}
+
 
 /* Final footer CSS */
 .FTR-footer {
