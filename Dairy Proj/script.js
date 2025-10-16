@@ -153,5 +153,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+  // Get current page file name (e.g. "blogs.html")
+  const currentPage = window.location.pathname.split("/").pop().toLowerCase();
 
+  // Loop through breadcrumb links and highlight the current one
+  document.querySelectorAll(".breadcrumb a").forEach(link => {
+    const href = link.getAttribute("href").toLowerCase();
+    if (currentPage === href) {
+      link.classList.add("active");
+    }
+  });
  

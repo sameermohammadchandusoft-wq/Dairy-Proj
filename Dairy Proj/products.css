@@ -471,17 +471,17 @@
 }
 
 .product-card {
-  
+  margin: 10px 10px;
   border-radius: 15px;
   padding: 20px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(173, 2, 2, 0.08);
   position: relative;
   transition: all 0.3s ease;
-  --r: 20px; /* the radius */
-  --s: 22px; /* size of inner curve */
-  --x: 11px; /* horizontal offset (no percentane) */
-  --y: 11px; /* vertical offset (no percentage) */
+  --r: 22px; /* the radius */
+  --s: 18px; /* size of inner curve */
+  --x: 17px; /* horizontal offset (no percentane) */
+  --y: 13px; /* vertical offset (no percentage) */
   width: 250px;
   aspect-ratio: 1;
   background: rgb(163, 66, 66);
@@ -533,26 +533,7 @@
   color: #999;
   margin-right: 6px;
 }
-.cart-btn {
-  position: absolute;
-  bottom: 0px;   /* Added a little spacing from the edges */
-  right: 0px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: #0072ce;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.3s;
-}
 
-.cart-btn:hover {
-  background: #4c4d4e;
-}
 
 /* === About Us Section === */
 .about-section {
@@ -620,17 +601,7 @@
   color: #222;
 }
 
-.btn {
-  display: inline-block;
-  padding: 12px 25px;
-  background: #0077ff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 25px;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
+ 
 .btn:hover {
   background: #005fcc;
 }
@@ -679,9 +650,9 @@
 }
 
 .product-card {
-  background: #fff;
+  background: #dadada;
   border-radius: 12px;
-  padding: 20px;
+  padding: 15px; /* reduced from 30px */
   text-align: center;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
@@ -711,8 +682,8 @@
 /* Cart Button outside card */
 .cart-btn {
   position: absolute;
-  bottom: -20px;
-  right: 20px;
+  bottom: 10px;
+  right: 5px;
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -742,7 +713,7 @@
 .page-btn {
   border: 1px solid #ddd;
   background: #fff;
-  padding: 8px 12px;
+  padding: 10px 15px;
   cursor: pointer;
   border-radius: 4px;
   transition: 0.3s;
