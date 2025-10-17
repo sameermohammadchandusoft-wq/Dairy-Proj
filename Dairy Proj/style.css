@@ -166,47 +166,73 @@ body, html {
   height: 18px;
 }
 .search-wrapper {
-  position: relative;
+  position: relative; /* makes popup follow this container */
   display: inline-block;
 }
 
-.search-popup {
-  position: absolute;
-  top: 95px; /* Pushes the popup below the button */
-  right: 90px; /* Adjusts the popup to the left */
+/* Search Button */
+.btn-search {
   background-color: white;
-  padding: 10px;
-  border: 2px solid #007bff; /* Blue border */
-  border-radius: 8px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-  display: none;
-  z-index: 1000;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease;
 }
 
-/* Triangle Arrow */
+.btn-search:hover {
+  background-color: #eaeaea;
+}
+
+/* Popup Box */
+.search-popup {
+  position: absolute;
+  top: calc(100% + 10px); /* right below the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 10px;
+  display: none; /* hidden initially */
+  z-index: 1000;
+}
+.search-popup form {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between input and button */
+}
+
+
+/* Popup arrow */
 .search-popup::before {
   content: "";
   position: absolute;
-  top: -10px; /* Positions the arrow above the popup */
-  left: 50%; /* Centers the arrow horizontally */
-  transform: translateX(-50%); /* Adjusts for exact centering */
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
   border-width: 0 10px 10px 10px;
   border-style: solid;
-  border-color: transparent transparent #007bff transparent; /* Blue arrow */
+  border-color: transparent transparent #007bff transparent;
 }
 
-/* Inner triangle to create a layered arrow effect */
 .search-popup::after {
   content: "";
   position: absolute;
-  top: -8px; /* Slightly lower than the ::before arrow */
+  top: -8px;
   left: 50%;
   transform: translateX(-50%);
   border-width: 0 9px 9px 9px;
   border-style: solid;
-  border-color: transparent transparent white transparent; /* White inner triangle */
+  border-color: transparent transparent white transparent;
 }
 
+/* Input + Button */
 .search-popup input[type="text"] {
   padding: 8px;
   width: 200px;
@@ -224,7 +250,6 @@ body, html {
   padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
 }
 
 .search-popup button:hover {

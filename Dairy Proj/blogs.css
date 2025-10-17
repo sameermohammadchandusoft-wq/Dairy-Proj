@@ -17,10 +17,10 @@ body, html {
 }
 /* Hero Section with Clip-Path */
 .hero-section {
-   --r: 20px;  /* smoother outer radius */
-  --s: 25px;  /* inner curve close to radius */
-  --x: 125px;   /* small offset for balance */
-  --y: 25px;   /* small offset for balance */
+  --r: 20px;  /* smoother outer radius */
+   --s: 25px;  /* inner curve close to radius */
+   --x: 125px;   /* small offset for balance */
+   --y: 25px;   /* small offset for balance */
  
   width: calc(100% - 28px); /* account for left+right margin */
   height: 350px;
@@ -122,17 +122,17 @@ body, html {
 .nav-contact {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 16px; /* Spacing between phone, search, button */
   font-family: Arial, sans-serif;
-  margin-left: 300px;
-  margin-top: -40px;
+  margin-left: 250px; /* Reduced to shift the contact section left */
+  margin-top: -10px; /* Adjusted vertical position */
 }
 
 /* Links inside nav-contact */
 .nav-contact a {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 5px; /* Spacing between icon and text */
   text-decoration: none;
   color: white;
   font-size: 14px;
@@ -141,7 +141,7 @@ body, html {
 
 /* Icons inside nav-contact */
 .nav-contact i {
-  font-size: 18px;
+  font-size: 18px; /* Adjust icon size as needed */
   color: white;
 }
 
@@ -157,13 +157,12 @@ body, html {
   justify-content: center;
   align-items: center;
   transition: background 0.3s ease;
-  margin-left: 15px;
-  margin-top: -5px;
 }
 
 .btn-search:hover {
   background-color: #eaeaea;
 }
+
 
 .btn-search svg {
   stroke: #007bff;
@@ -171,47 +170,74 @@ body, html {
   height: 18px;
 }
 .search-wrapper {
-  position: relative;
+  position: relative; /* makes popup follow this container */
   display: inline-block;
 }
 
-.search-popup {
-  position: absolute;
-  top: 75px; /* Pushes the popup below the button */
-  right: 70px; /* Adjusts the popup to the left */
+/* Search Button */
+.btn-search {
   background-color: white;
-  padding: 10px;
-  border: 2px solid #007bff; /* Blue border */
-  border-radius: 8px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-  display: none;
-  z-index: 1000;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease;
+  
 }
 
-/* Triangle Arrow */
+.btn-search:hover {
+  background-color: #eaeaea;
+}
+
+/* Popup Box */
+.search-popup {
+  position: absolute;
+  top: calc(100% + 10px); /* right below the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 10px;
+  display: none; /* hidden initially */
+  z-index: 1000;
+}
+.search-popup form {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between input and button */
+}
+
+
+/* Popup arrow */
 .search-popup::before {
   content: "";
   position: absolute;
-  top: -10px; /* Positions the arrow above the popup */
-  left: 50%; /* Centers the arrow horizontally */
-  transform: translateX(-50%); /* Adjusts for exact centering */
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
   border-width: 0 10px 10px 10px;
   border-style: solid;
-  border-color: transparent transparent #007bff transparent; /* Blue arrow */
+  border-color: transparent transparent #007bff transparent;
 }
 
-/* Inner triangle to create a layered arrow effect */
 .search-popup::after {
   content: "";
   position: absolute;
-  top: -8px; /* Slightly lower than the ::before arrow */
+  top: -8px;
   left: 50%;
   transform: translateX(-50%);
   border-width: 0 9px 9px 9px;
   border-style: solid;
-  border-color: transparent transparent white transparent; /* White inner triangle */
+  border-color: transparent transparent white transparent;
 }
 
+/* Input + Button */
 .search-popup input[type="text"] {
   padding: 8px;
   width: 200px;
@@ -229,7 +255,6 @@ body, html {
   padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
 }
 
 .search-popup button:hover {

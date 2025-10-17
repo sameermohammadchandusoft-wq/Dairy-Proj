@@ -48,17 +48,17 @@
 
   <!-- Wrapper to anchor popup relative to the button -->
 <div class="search-wrapper">
-      <!-- Search Button -->
-      <button class="btn-search" aria-label="Search">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-      </button>
-    </div>
-  </nav>
+  <!-- Search Button -->
+  <button class="btn-search" aria-label="Search">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+         stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  </button>
 
-  <!-- Search Popup -->
+  <!-- Search Popup (✅ moved inside) -->
   <div class="search-popup" id="searchPopup">
     <form id="searchForm">
       <input type="text" placeholder="Type to search..." />
@@ -392,30 +392,9 @@
 
 <!--To Move To Next Step-->
  
- <script>
-  // Grab all steps
-  const steps = document.querySelectorAll(".step");
  
-  // Loop through each step
-  steps.forEach(step => {
-    step.addEventListener("click", () => {
-      // Remove highlight from all
-      steps.forEach(s => s.classList.remove("highlight"));
-      // Add to clicked one
-      step.classList.add("highlight");
-    });
-  });
-</script>
-<script>
-  const currentPage = window.location.pathname.split("/").pop();
-  document.querySelectorAll("a").forEach(link => {
-    if (link.getAttribute("href") === currentPage) {
-      link.classList.add("active");
-    }
-  });
-</script>
  <div id="footer-placeholder"></div>
- 
+
 </body>
 <script src="script.js"></script>
 </html>
