@@ -42,20 +42,7 @@ body, html {
   mask-repeat: no-repeat;
 }
 
-/*
-.hero-section::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 170px;
-  height: 70px;
-  background: #fff;
-  border-bottom-left-radius: 30px;
-  z-index: 2;
-}
-  */
-
+ 
 /* Navbar */
 .navbar {
   display: flex;
@@ -302,10 +289,10 @@ section.hero {
   margin: 20px 0;
 }
 
-.hero-content p {
-  font-size: 16px;
-  color: #ddd;
-  margin-bottom: 30px;
+.hero-content h5 {
+  font-size: 12px;
+  
+
 }
 
 .cta-btn {
@@ -335,9 +322,9 @@ section.hero {
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin-bottom: 40px;
+  margin: 50px 0px 50px 0px;
   padding-bottom: 30px;
-  border-bottom: 1px solid #ddd; /* thin dividing line */
+  
 }
 
 
@@ -346,16 +333,52 @@ section.hero {
   padding: 35px;
   border-radius: 25px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  width: 320px;
   position: relative;
   transition: transform 0.3s, box-shadow 0.3s;
   overflow: hidden;
   text-align: left; /* align content properly */
+  --r: 20px; /* the radius */
+  --s: 30px; /* size of inner curve */
+  --x: 20px; /* horizontal offset (no percentane) */
+  --y: 10px; /* vertical offset (no percentage) */
+ 
+   width: 330px;
+  height: 180px;
+  aspect-ratio: 1;
+  background: #f8f8f8;
+  border-radius: var(--r);
+  --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%);
+  --_g:conic-gradient(from 90deg at calc(100% - var(--r)) calc(100% - var(--r)),#0000 25%,#000 0);
+  --_d:(var(--s) + var(--r));
+  mask:
+    calc(100% - var(--_d) - var(--x)) 100% var(--_m),
+    100% calc(100% - var(--_d) - var(--y)) var(--_m),
+    radial-gradient(var(--s) at 100% 100%,#0000 99%,#000 calc(100% + 1px))
+     calc(-1*var(--r) - var(--x)) calc(-1*var(--r) - var(--y)),
+    var(--_g) calc(-1*var(--_d) - var(--x)) 0,
+    var(--_g) 0 calc(-1*var(--_d) - var(--y));
+  mask-repeat: no-repeat;
 }
+.card-wrapper {
+  position: relative; 
+  display: inline-block;
+}
+.card-arrow {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  width: 32px;       /* ðŸ”„ Smaller width */
+  height: 32px;      /* ðŸ”„ Smaller height */
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 6px;      /* ðŸ”„ Adjust padding */
+  box-sizing: border-box;
+}
+
 
 .contact-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 30px rgba(146, 101, 101, 0.15);
 }
 
 /* Flex container for icon + heading */
@@ -378,7 +401,7 @@ section.hero {
 }
 
 .card-header h3 {
-  margin: 0;
+ 
   font-size: 1.3rem;
   color: #222;
 }
@@ -389,12 +412,11 @@ section.hero {
   line-height: 1.5;
   margin-top: 15px;
   padding-top: 12px;
-  border-top: 1px solid #ddd; /* thin line above paragraph */
+
 }
 
-
 .contact-card::after {
-  content: '↗';
+ 
   position: absolute;
   bottom: 10px;
   right: 10px;
@@ -414,13 +436,14 @@ section.hero {
    Contact Form Section
 ------------------------------ */
 /* Contact Form Section - No Gap Between Image and Form */
+/* Contact Form Section - Split 40/60 */
 .contact-form-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0; /* No space between columns */
-  align-items: stretch; /* Ensures both columns are the same height */
-  max-width: 960px; /* Reduced max width */
-  margin: 20px auto; /* Reduced margin */
+  grid-template-columns: 40% 60%;
+  gap: 0;
+  align-items: stretch;
+  max-width: 960px;
+  margin: 20px auto;
   padding: 0;
 }
 
@@ -429,16 +452,18 @@ section.hero {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fff; /* Optional: to match form box */
+  background: #ffffff;
   padding: 0;
   margin: 0;
 }
 
 /* Image styling */
 .form-image img {
-  width: 110%; /* Reduced image width */
-  height: auto; /* Auto height to maintain aspect ratio */
-  object-fit: cover; 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
   border-top-left-radius: 20px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -446,36 +471,38 @@ section.hero {
   display: block;
 }
 
+
 /* Form box styling */
 .form-box {
-  background: #eeeeee;
+  background: #fafafa;
   padding: 45px; /* Reduced padding */
   border-top-left-radius: 0px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 0px; 
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  margin: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
   
 }
 .form-box h2 {
   margin-bottom: 30px; /* Gap between the heading and form layout */
-  color: #000203;
+  color: #000;
 }
 .form-box h6 {
   width: auto !important;
-  color: #000203;
   background-color: white;
-  display: inline-block;
-  padding: 5px 8px;       /* reduced padding */
-  border-radius: 4px;     /* slightly smaller corners */
-  margin-bottom: 20px;    /* less spacing below */
-  font-size: 14px;        /* optional: reduce text size */
+  display: inline-block !important;
+  padding: 15px 15px;
+  border-radius: 6px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #000;
 }
+
+
 /* Form Layout */
 .form-layout {
   display: flex;
@@ -487,6 +514,7 @@ section.hero {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  
 }
 
 .form-row.full {
@@ -498,7 +526,7 @@ section.hero {
 .form-layout textarea {
   flex: 1;
   padding: 10px 14px; /* Reduced padding */
-  border: 1px solid #ddd;
+  border: 1px solid #8b8b8b;
   border-radius: 8px;
   font-size: 14px;
   width: 100%;
@@ -556,6 +584,7 @@ section.hero {
     flex-direction: column;
   }
 }
+
 
 
 

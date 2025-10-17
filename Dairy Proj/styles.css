@@ -996,10 +996,10 @@ width: 450px;
 
  
 .history-section {
-  margin: 25px 100px 24px 100px; 
+  margin: 25px 100px;
   box-sizing: border-box;
 }
- 
+
 .history-badge {
   background: #e5f1fe;
   color: #1878d7;
@@ -1007,19 +1007,18 @@ width: 450px;
   border-radius: 16px;
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 13px;
   display: inline-block;
+  margin-bottom: 13px;
 }
- 
+
 .history-header-row {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin: 25px 66px 24px 25px; /* uniform left and right margin */
+  margin: 25px 66px 24px 25px;
   gap: 15px;
 }
 
- 
 .history-header-row h2 {
   color: #1878d7;
   font-size: 2.4rem;
@@ -1027,67 +1026,93 @@ width: 450px;
   margin: 0;
   line-height: 1.15;
 }
- 
+
 .history-header-row p {
   font-size: 1rem;
   color: #6d6d6d;
   margin: 0;
   max-width: 500px;
-  opacity: 0.90;
+  opacity: 0.9;
 }
- 
+
+/* ✅ Horizontal timeline layout */
+/* ✅ Horizontal timeline layout */
 .history-timeline {
   display: flex;
-  
-  border-radius: 15px;
-  padding: 32px 0 20px 0;
-  margin: 0 36px 38px 36px;
-  justify-content: space-around;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  padding: 50px 0 20px 0;
+  margin: 0 36px 38px 34px;
+  gap: 40px;
 }
- 
+
+/* ✅ Horizontal green line */
+.history-timeline::before {
+  content: "";
+  position: absolute;
+  top: 146px; /* aligns line with all dots */
+  left: -130px;
+  width: 125%;
+  height: 0.5px;
+  background-color: #ccc;
+  z-index: 0;
+}
+
+/* Each timeline column */
 .history-year-col {
-  flex: 1 1 0;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  justify-content: flex-start;
+  align-items: start; /* centers each column */
+  text-align: start;
+  position: relative;
+  z-index: 1;
 }
- 
+
+/* Year */
 .year {
-   font-size: 40px;
-  font-weight: 800;
+  font-size: 42px;
+  font-weight: 600;
   color: transparent;
-  -webkit-text-stroke: 1.5px #999;
-  margin-bottom: 10px;
+  -webkit-text-stroke: 1px #666;
+  margin-bottom: 35px; /* pushes dot to align perfectly */
   letter-spacing: 1px;
 }
- 
+
+/* Dot */
 .dot {
-  width: 10px;
-  height: 10px;
-  background: #36b37e;
+  width: 12px;
+  height: 12px;
+  background: green;
+  align-items: start; /* centers each column */
   border-radius: 50%;
-  margin: 8px 0 19px 0;
+  position: relative;
+  top: 0;
+  margin-bottom: 35px; /* space below dot before title */
+  z-index: 1;
+  border: 1px solid #fff;
 }
- 
+
+/* Title & description */
 .milestone-title {
+  align-items: start; /* centers each column */
   font-size: 1.08rem;
   color: #1878d7;
   font-weight: 700;
   margin-bottom: 7px;
-  text-align: start;
 }
- 
+
 .milestone-desc {
+  
   font-size: 0.97rem;
   color: #535353;
-  opacity: 0.80;
-  text-align: start;
-  margin-bottom: 6px;
+  opacity: 0.9;
+  max-width: 250px;
   line-height: 1.48;
-  max-width: 300px;
 }
+
+
  
 
 
@@ -1544,11 +1569,11 @@ width: 450px;
 }
 .FTR-body-grid {
   max-width: 1180px;
-  margin: 10px auto;
+  margin: 0 auto;
   padding: 0 40px;
   display: grid;
   grid-template-columns: 280px 1fr; /* left brand (sidebar) + right flexible */
-  gap: 40px;
+  gap: 50px;
   align-items: start;
   box-sizing: border-box;
 }

@@ -18,6 +18,7 @@ body, html {
    --r: 20px;  /* smoother outer radius */
   --s: 25px;  /* inner curve close to radius */
   --x: 125px;   /* small offset for balance */
+
   --y: 20px;   /* small offset for balance */
  filter: brightness(1.2);
   filter:contrast(1.4);
@@ -1430,24 +1431,23 @@ body, html {
 /* Stats */
 .stats {
   display: flex;
-  gap: 1%;
+  gap: 8%;
   align-items: center;
-  margin-left:5%;
-  margin-top:-1%;
+  margin-left: 5px;
 }
 
 /* Stat Item */
 .stat-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   color: #fff;
 }
 
 /* Inner Circle */
 .circle {
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
   background: #fff;
   border-radius: 50%;
   display: flex;
@@ -1467,23 +1467,21 @@ body, html {
 /* Outer Arc */
 .outer-arc {
   position: absolute;
-  width: 100px;
-  height: 103px;
+  width: 120px;
+  height: 120px;
   border: 2px solid #fff;
   border-radius: 50%;
-  top: -6px;
   /*left: -10px;*/
   /*clip-path: inset(20% -25% -10% -15%);*/
-  clip-path: inset(-10% -15% -10% 3%);
+  clip-path: inset(-15% -15% -10% 3%);
   
 }
 .outer-arc1 {
   position: absolute;
-  width: 100px;
-  height: 103px;
+  width: 120px;
+  height: 120px;
   border: 2px solid #fff;
   border-radius: 50%;
-  top: -6px;
   /*left: -10px;*/
   /*clip-path: inset(20% -25% -10% -15%);*/
   clip-path: inset(-15% -25% -10% 12%);
@@ -1627,10 +1625,10 @@ body, html {
  
  
 .history-section {
-  margin: 25px 100px 24px 100px; 
+  margin: 25px 100px;
   box-sizing: border-box;
 }
- 
+
 .history-badge {
   background: #e5f1fe;
   color: #1878d7;
@@ -1638,19 +1636,18 @@ body, html {
   border-radius: 16px;
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 13px;
   display: inline-block;
+  margin-bottom: 13px;
 }
- 
+
 .history-header-row {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin: 25px 66px 24px 36px; /* uniform left and right margin */
-  gap: 10px;
+  margin: 25px 66px 24px 25px;
+  gap: 15px;
 }
 
- 
 .history-header-row h2 {
   color: #1878d7;
   font-size: 2.4rem;
@@ -1658,74 +1655,92 @@ body, html {
   margin: 0;
   line-height: 1.15;
 }
- 
+
 .history-header-row p {
   font-size: 1rem;
   color: #6d6d6d;
   margin: 0;
   max-width: 500px;
-  opacity: 0.90;
+  opacity: 0.9;
 }
- 
+
+/* ✅ Horizontal timeline layout */
+/* ✅ Horizontal timeline layout */
 .history-timeline {
   display: flex;
-  
-  border-radius: 15px;
-  padding: 32px 0 20px 0;
-  margin: 0 36px 38px 36px;
-  justify-content: space-around;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  padding: 50px 0 20px 0;
+  margin: 0 36px 38px 34px;
+  gap: 40px;
 }
- 
+
+/* ✅ Horizontal green line */
+.history-timeline::before {
+  content: "";
+  position: absolute;
+  top: 146px; /* aligns line with all dots */
+  left: -130px;
+  width: 125%;
+  height: 0.5px;
+  background-color: #ccc;
+  z-index: 0;
+}
+
+/* Each timeline column */
 .history-year-col {
-  flex: 1 1 0;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  justify-content: flex-start;
+  align-items: start; /* centers each column */
+  text-align: start;
+  position: relative;
+  z-index: 1;
 }
- 
+
+/* Year */
 .year {
-  font-size: 2.1rem;
+  font-size: 42px;
   font-weight: 600;
-   -webkit-text-stroke: 1.5px #999;
-   
-  letter-spacing: 3px;
-  margin-bottom: 2px;
-  margin-top: 6px;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #666;
+  margin-bottom: 35px; /* pushes dot to align perfectly */
+  letter-spacing: 1px;
 }
- 
-.dot-line {
-  width: 10px;
-  height: 10px;
-  background: #36b37e;
+
+/* Dot */
+.dot {
+  width: 12px;
+  height: 12px;
+  background: green;
+  align-items: start; /* centers each column */
   border-radius: 50%;
-  margin: 8px 0 19px 0;
-
- 
+  position: relative;
+  top: 0;
+  margin-bottom: 35px; /* space below dot before title */
+  z-index: 1;
+  border: 1px solid #fff;
 }
 
-
-
- 
- 
+/* Title & description */
 .milestone-title {
+  align-items: start; /* centers each column */
   font-size: 1.08rem;
   color: #1878d7;
   font-weight: 700;
   margin-bottom: 7px;
-  text-align: start;
 }
- 
+
 .milestone-desc {
+  
   font-size: 0.97rem;
   color: #535353;
-  opacity: 0.80;
-  text-align: start;
-  margin-bottom: 6px;
+  opacity: 0.9;
+  max-width: 250px;
   line-height: 1.48;
-  max-width: 300px;
 }
+
  
 /* Global Variables */
 :root {
