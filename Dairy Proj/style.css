@@ -19,7 +19,8 @@ body, html {
   --s: 25px;  /* inner curve close to radius */
   --x: 125px;   /* small offset for balance */
   --y: 20px;   /* small offset for balance */
- 
+ filter: brightness(1.2);
+  filter:contrast(1.4);
   width: calc(100% - 28px); /* account for left+right margin */
   height: 600px;
  
